@@ -1,8 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Great+Vibes&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* General Styles */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
     color: white;
+}
+
+/* fonts */
+.great-vibes {
+    font-family: "Great Vibes", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.graduate {
+    font-family: "Graduate", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto {
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.raleway {
+    font-family: "Raleway", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* Hero Section */
@@ -10,20 +40,19 @@ body {
     background-size: cover;
     background-position: center;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
     padding: 20px;
 }
 
 /* Logo */
 .logo img {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 150px;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    /* Increased size */
 }
 
 /* Navbar */
@@ -45,6 +74,9 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     transition: background 0.3s ease;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .navbar ul li a:hover {
@@ -52,29 +84,51 @@ body {
 }
 
 /* Tagline */
+.tagline {
+    grid-column: span 2;
+    text-align: left;
+    /* Align the tagline to the left */
+    margin-left: 10%;
+    /* Adjust horizontal positioning */
+    margin-top: 100px;
+    /* Push it down slightly */
+}
+
+.larger-font {
+    font-size: 4.5rem !important;
+}
+
 .tagline h1 {
-    font-size: 3rem;
-    margin: 20px 0;
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+    line-height: 1.2;
+    /* Slightly reduce line spacing */
 }
 
 .tagline h1 span {
-    color: #007bff;
-    font-weight: bold;
+    color: white;
 }
 
 .tagline p {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 10%;
+    /* Adjust horizontal positioning */
 }
 
 /* Services Monitor */
 .services-monitor {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-evenly;
+    grid-column: 1 / 2;
+    margin-top: 50px;
 }
 
 .services-monitor img {
-    width: 300px;
+    max-width: 300px;
 }
 
 .services {
@@ -84,10 +138,14 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 250px;
 }
 
 .services h3 {
     margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .services ul {
@@ -101,25 +159,35 @@ body {
     align-items: center;
     gap: 10px;
     margin: 5px 0;
+    font-size: 0.9rem;
 }
 
 .services ul li img {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 }
 
 /* Call to Action Box */
 .cta-box {
+    grid-column: 2 / 3;
     background: white;
     color: black;
     padding: 20px;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
 }
 
 .cta-box h2 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.cta-box p {
+    margin-bottom: 20px;
+    font-size: 1rem;
 }
 
 .cta-box button {
