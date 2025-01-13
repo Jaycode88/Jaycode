@@ -111,10 +111,10 @@ body {
 }
 
 .tagline p {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-top: 10px;
     text-align: center;
-    margin-left: 10%;
+    margin-left: 20%;
     /* Adjust horizontal positioning */
 }
 
@@ -146,9 +146,9 @@ body {
 /* Services Overlay (Content on Monitor) */
 .services-overlay {
     position: absolute;
-    top: 15%;
+    top: 10%;
     /* Position services inside the monitor */
-    left: 10%;
+    left: 15%;
     width: 70%;
     color: black;
     background: white;
@@ -158,29 +158,48 @@ body {
 }
 
 .services-overlay h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     margin-bottom: 15px;
     font-family: "Graduate", sans-serif;
     text-align: center;
 }
 
-.services-overlay ul {
-    list-style: none;
-    padding: 0;
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 equal columns */
+    gap: 20px;
+    /* Spacing between items */
+    text-align: center;
+    /* Center align each item */
 }
 
-.services-overlay ul li {
+/* Individual Service Item */
+.service-item {
     display: flex;
+    flex-direction: column;
+    /* Stack icon and text vertically */
     align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
     font-size: 0.9rem;
 }
 
-.services-overlay ul li img {
-    width: 20px;
-    height: 20px;
+.service-item img {
+    margin-top: 50px;
+    width: 50px;
+    /* Size for icons */
+    height: 50px;
+    margin-bottom: 10px;
+    /* Space between icon and text */
+}
+
+.service-item p {
+    margin: 0;
+    margin-top: 50px;
+    font-size: 1rem;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
 }
 
 /* CTA Box */
