@@ -271,6 +271,10 @@ body {
         /* Ensures tagline stays near the top */
     }
 
+    .navbar ul {
+        top: 30px !important;
+    }
+
     .tagline {
         margin-top: 15px;
         /* Reduce space above the tagline */
@@ -280,12 +284,14 @@ body {
         top: 20px;
         /* Bring navbar closer to the top */
     }
-}
 
-@media (min-width: 768px) and (max-width: 915px) {
     .services-overlay {
         width: 80%;
     }
+}
+
+@media (min-width: 768px) and (max-width: 915px) {
+
 
     .services-overlay h3 {
         margin-bottom: 25px;
@@ -303,17 +309,352 @@ body {
 }
 
 @media (max-width: 768px) {
+    .navbar ul {
+        gap: 10px;
+        right: 30px;
+        margin: 0;
+    }
+
     #hero {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
     }
 
     .tagline {
-        text-align: center;
-        margin-left: 0;
+        margin-top: 70px;
+        text-align: left;
+        margin-left: 5%;
     }
 
     .services-monitor {
         flex-direction: column;
+        gap: 20px;
+        padding-left: max(5%, 10px);
+        padding-right: max(5%, 10px);
+        width: 70%;
+        margin: 0 auto;
+
     }
+
+    .services-overlay {
+        top: 5%;
+        left: 7.5%;
+        width: 85%;
+    }
+
+    .services-overlay h3 {
+        margin-top: 10px;
+        margin-bottom: 10%;
+        font-size: 1.5rem;
+    }
+
+    .service-item p {
+        font-size: 1.0rem;
+        margin-top: 30%;
+    }
+
+    .service-item img {
+        margin-bottom: 0;
+    }
+
+    /* CTA Box */
+    .cta-box {
+        padding: 15px;
+        width: 100%;
+        margin-top: -15px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 721px) {
+    .services-overlay h3 {
+        font-size: 1.2rem;
+    }
+
+    .navbar ul {
+        gap: 10px;
+        top: 30px;
+        right: 30px;
+        margin: 0;
+    }
+
+    .navbar ul li a {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .tagline {
+        margin-top: 2%;
+    }
+}
+
+@media (max-width: 650px) {
+
+    /* Center the logo at the top */
+    .logo img {
+        position: static;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 170px;
+    }
+
+    /* Position the navbar horizontally below the logo */
+    .navbar ul {
+        position: static;
+        /* Remove absolute positioning */
+        display: flex;
+        /* Keep links horizontal */
+        justify-content: center;
+        /* Center the links */
+        align-items: center;
+        gap: 15px;
+        /* Add space between links */
+        margin-top: 10px;
+        /* Add space between the logo and navbar */
+        padding: 0;
+    }
+
+    .navbar ul li a {
+        padding: 8px 15px;
+        /* Adjust padding for smaller screens */
+        font-size: 0.9rem;
+        /* Reduce font size slightly */
+    }
+
+    .tagline {
+        margin-top: 0;
+    }
+
+    .tagline h1 {
+        justify-self: center;
+    }
+
+    .tagline h1 span.larger-font {
+        font-size: 2.5rem;
+        /* Reset to default font size */
+    }
+
+    .services-monitor {
+        width: 80%;
+        margin-bottom: 0;
+    }
+
+    .cta-box {
+        margin-top: -25px;
+    }
+
+}
+
+@media (max-width: 560px) {
+    .services-monitor {
+        margin-top: -5px;
+        width: 90%;
+    }
+
+    .tagline p {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .services-monitor {
+        width: 95%;
+    }
+
+    .tagline h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 460px) {
+
+    /* Stack the nav links vertically */
+    .navbar ul {
+        flex-direction: column;
+        /* Stack links vertically */
+        align-items: center;
+        /* Center the links */
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .navbar ul li {
+        margin: 3px;
+    }
+
+    .navbar ul li a {
+        padding: 8px 15px;
+        /* Adjust padding for better visibility */
+        font-size: 0.8rem;
+        /* Reduce font size slightly */
+    }
+
+    /* Adjust spacing for the logo and tagline */
+    .logo img {
+        margin-bottom: 10px;
+        /* Add space below the logo */
+    }
+
+    .tagline {
+        margin-top: -5%;
+        /* Space below the navbar */
+        text-align: center;
+        /* Center-align tagline text */
+        margin-bottom: 5px;
+    }
+
+    .tagline h1 {
+        margin-bottom: 0;
+    }
+
+    .tagline p {
+        margin-top: 0;
+    }
+
+    .services-monitor {
+        width: 100%;
+    }
+
+    .services-overlay h3 {
+        font-size: 1.2rem;
+    }
+
+    .cta-box {
+        padding-top: 0;
+    }
+
+    .cta-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-box p {
+        font-size: 1.0rem;
+        margin-top: 0;
+    }
+
+    .cta-box button {
+        padding: 6px 12px;
+        font-size: 1.0rem;
+    }
+
+}
+
+@media (max-width: 435px) {
+    .services-overlay {
+        margin: 0;
+    }
+
+    .services-overlay h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 405px) {
+    .tagline h1 {
+        font-size: 1.0rem;
+    }
+
+    .services-monitor {
+        width: 110%;
+        margin-left: -20px !important;
+    }
+
+    .cta-box {
+        width: 80%;
+        align-self: center;
+    }
+}
+
+@media (max-width: 365px) {
+    .services-overlay {
+        width: 80%;
+        /* Reduce width for smaller screens */
+        padding: 5px;
+        /* Reduce padding */
+        left: 10%;
+        /* Center it more effectively */
+        top: 5%;
+        /* Adjust positioning */
+
+    }
+
+    .services-overlay h3 {
+        font-size: 1rem;
+        /* Smaller heading font */
+        margin-bottom: 15px;
+        /* Reduce space below the heading */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Show 2 columns instead of 4 */
+        gap: 5px;
+        /* Reduce gap between items */
+    }
+
+    .service-item img {
+        width: 30px;
+        /* Make service icons smaller */
+        height: 30px;
+        margin-bottom: 5px;
+        /* Reduce space below the icon */
+    }
+
+    .service-item p {
+        font-size: 0.8rem;
+        /* Smaller text */
+        margin-top: 10px;
+        /* Reduce space above the text */
+    }
+}
+
+@media (max-width: 344px) {
+    .services-overlay {
+        width: 85%;
+        /* Maximize available space */
+        padding: 5px;
+        /* Minimal padding */
+        left: 8%;
+        /* Center the overlay */
+        top: 5%;
+        /* Adjust positioning */
+    }
+
+    .services-overlay h3 {
+        font-size: 0.9rem;
+        /* Reduce heading font size further */
+        margin-bottom: 10px;
+        /* Reduce space below heading */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Show 2 columns instead of 4 */
+        gap: 15px;
+        /* Reduce gap between items */
+    }
+
+    .service-item img {
+        width: 25px;
+        /* Smaller service icons */
+        height: 25px;
+        margin-bottom: 3px;
+        /* Reduce space below the icon */
+    }
+
+    .service-item p {
+        font-size: 0.7rem;
+        /* Smaller text */
+        margin-top: 5px;
+        /* Reduce space above the text */
+    }
+
+    .cta-box {
+        margin-top: 3px;
+    }
+
 }
