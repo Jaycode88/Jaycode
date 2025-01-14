@@ -1,58 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Graduate&family=Great+Vibes&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* fonts */
 .great-vibes {
     font-family: "Great Vibes", serif;
     font-weight: 400;
-    font-style: normal;
 }
 
 .graduate {
     font-family: "Graduate", serif;
     font-weight: 400;
-    font-style: normal;
 }
 
 .roboto {
     font-family: "Roboto", serif;
-    font-optical-sizing: auto;
     font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
 }
 
 .raleway {
     font-family: "Raleway", serif;
-    font-optical-sizing: auto;
     font-weight: 400;
-    font-style: normal;
+}
+
+.larger-font {
+    font-size: 4rem;
 }
 
 /* Hero Section */
 #hero {
+    background-image: url('/static/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
-    padding: 20px;
+    /* Adjust grid rows for balance */
+    align-items: start;
+    /* Align items closer to the top */
+    padding: 0;
+    /* Remove vertical padding */
 }
 
 /* Logo */
 .logo img {
     position: absolute;
-    top: 20px;
+    top: 15px;
+    /* Reduced space from the top */
     left: 20px;
-    width: 200px;
-    /* Increased size */
+    width: 150px;
+    border-radius: 5px;
 }
 
 /* Navbar */
@@ -61,17 +70,17 @@ body {
     display: flex;
     gap: 20px;
     position: absolute;
-    top: 40px;
-    right: 20px;
+    top: 30px;
+    /* Same as logo */
+    right: 50px;
     margin: 0;
-    padding: 0;
 }
 
 .navbar ul li a {
     color: white;
     text-decoration: none;
     background-color: black;
-    padding: 15px 25px;
+    padding: 10px 20px;
     border-radius: 5px;
     transition: background 0.3s ease;
     font-family: "Raleway", sans-serif;
@@ -83,39 +92,25 @@ body {
     background-color: #444;
 }
 
-/* Tagline */
 .tagline {
-    grid-column: span 2;
     text-align: left;
-    /* Align the tagline to the left */
     margin-left: 10%;
-    /* Adjust horizontal positioning */
-    margin-top: 100px;
-    /* Push it down slightly */
-}
-
-.larger-font {
-    font-size: 4.5rem !important;
+    /* Reduced top margin */
+    margin-bottom: 0;
+    /* No extra space below */
 }
 
 .tagline h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: bold;
-    margin: 10px 0;
     line-height: 1.2;
-    /* Slightly reduce line spacing */
-}
-
-.tagline h1 span {
-    color: white;
 }
 
 .tagline p {
-    font-size: 2.5rem;
+    font-size: clamp(1rem, 3vw, 2rem);
     margin-top: 10px;
     text-align: center;
-    margin-left: 20%;
-    /* Adjust horizontal positioning */
+    margin-bottom: 10px;
 }
 
 /* Services Monitor Section */
@@ -123,18 +118,21 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* Space below tagline */
-    padding: 0 5%;
+    gap: 20px;
+    padding-left: max(5%, 10px);
+    padding-right: max(5%, 10px);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Monitor Container */
 .monitor-container {
+    flex: 2.5;
+    /* Adjusted to take slightly less space */
     position: relative;
-    width: 800px;
-    height: auto;
-    margin-left: -5%;
-    margin-top: -55px;
-    /* Slightly pull up closer to tagline */
+    max-width: 800px;
+    width: 100%;
 }
 
 .monitor-image {
@@ -143,103 +141,549 @@ body {
     display: block;
 }
 
-/* Services Overlay (Content on Monitor) */
 .services-overlay {
     position: absolute;
-    top: 10%;
-    /* Position services inside the monitor */
-    left: 15%;
-    width: 70%;
+    top: 5%;
+    left: 10%;
+    /* Moved slightly to the left */
+    width: 75%;
+    /* Adjusts to maintain inner dimensions */
     color: black;
     background: white;
     padding: 15px;
     border-radius: 5px;
-    font-family: "Raleway", sans-serif;
+    z-index: 2;
+    overflow: hidden;
 }
 
 .services-overlay h3 {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    font-family: "Graduate", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     text-align: center;
+    margin-bottom: 100px;
 }
 
-/* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* 4 equal columns */
-    gap: 20px;
-    /* Spacing between items */
+    /* Maintain 4 columns by default */
+    gap: 15px;
     text-align: center;
-    /* Center align each item */
 }
 
-/* Individual Service Item */
 .service-item {
     display: flex;
     flex-direction: column;
-    /* Stack icon and text vertically */
     align-items: center;
     font-size: 0.9rem;
 }
 
 .service-item img {
-    margin-top: 50px;
     width: 50px;
-    /* Size for icons */
     height: 50px;
-    margin-bottom: 10px;
-    /* Space between icon and text */
 }
 
 .service-item p {
-    margin: 0;
     margin-top: 50px;
-    font-size: 1rem;
-    font-family: "Raleway", sans-serif;
-    font-weight: bold;
+    font-size: 1.5rem;
 }
 
 /* CTA Box */
 .cta-box {
+    flex: 1.2;
+    /* Slightly increased space allocation */
     background: white;
     color: black;
     padding: 30px;
+    /* Increased padding for larger size */
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    width: 420px;
-    margin-top: 50px;
-    /* Align with the monitor */
-    margin-left: 150px;
-    /* Spacing from the monitor */
-    font-family: "Raleway", sans-serif;
+    border: 5px solid #0487D9;
+    width: 100%;
+    max-width: 650px;
+    /* Increased maximum width */
+    margin-left: 5%;
+    /* Keeps the same position to the right */
+    margin-top: 5%;
+    /* Reduced top margin to align better */
+}
+
+.cta-box:hover {
+    border-color: white;
+    /* Slightly darker shade for interaction feedback */
 }
 
 .cta-box h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 10px;
-    font-family: "Graduate", sans-serif;
+    margin-top: 10px;
 }
 
 .cta-box p {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .cta-box button {
     background-color: black;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .cta-box button:hover {
     background-color: #444;
+}
+
+/* Media Queries */
+@media (min-width: 1450px) {
+    .services-grid {
+        gap: 10px;
+    }
+
+    .service-item p {
+        font-size: 1rem;
+    }
+
+    .services-overlay h3 {
+        margin-bottom: 50px;
+    }
+
+    #hero {
+        grid-template-rows: auto auto auto;
+        /* Explicitly define row sizes */
+        row-gap: 0;
+        /* Remove any additional gap between rows */
+    }
+
+    .tagline {
+        margin-top: 0;
+        /* Reset any extra margin */
+        padding-top: 0;
+        /* Ensure no extra padding */
+    }
+
+    .navbar ul {
+        top: 20px;
+        /* Bring navbar closer to the top */
+    }
+
+    .logo img {
+        top: 10px;
+        /* Reduce space above the logo */
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .services-overlay h3 {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .services-overlay p {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    #hero {
+        grid-template-rows: auto auto auto;
+        /* Use explicit rows to avoid stretching */
+        align-items: flex-start;
+        /* Ensures tagline stays near the top */
+    }
+
+    .navbar ul {
+        top: 30px !important;
+    }
+
+    .tagline {
+        margin-top: 15px;
+        /* Reduce space above the tagline */
+    }
+
+    .navbar ul {
+        top: 20px;
+        /* Bring navbar closer to the top */
+    }
+
+    .services-overlay {
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 915px) {
+
+
+    .services-overlay h3 {
+        margin-bottom: 25px;
+    }
+
+    .services-overlay p {
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 915px) {
+    .cta-box {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        gap: 10px;
+        right: 30px;
+        margin: 0;
+    }
+
+    #hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .tagline {
+        margin-top: 70px;
+        text-align: left;
+        margin-left: 5%;
+    }
+
+    .services-monitor {
+        flex-direction: column;
+        gap: 20px;
+        padding-left: max(5%, 10px);
+        padding-right: max(5%, 10px);
+        width: 70%;
+        margin: 0 auto;
+
+    }
+
+    .services-overlay {
+        top: 5%;
+        left: 7.5%;
+        width: 85%;
+    }
+
+    .services-overlay h3 {
+        margin-top: 10px;
+        margin-bottom: 10%;
+        font-size: 1.5rem;
+    }
+
+    .service-item p {
+        font-size: 1.0rem;
+        margin-top: 30%;
+    }
+
+    .service-item img {
+        margin-bottom: 0;
+    }
+
+    /* CTA Box */
+    .cta-box {
+        padding: 15px;
+        width: 100%;
+        margin-top: -15px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 721px) {
+    .services-overlay h3 {
+        font-size: 1.2rem;
+    }
+
+    .navbar ul {
+        gap: 10px;
+        top: 30px;
+        right: 30px;
+        margin: 0;
+    }
+
+    .navbar ul li a {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .tagline {
+        margin-top: 2%;
+    }
+}
+
+@media (max-width: 650px) {
+
+    /* Center the logo at the top */
+    .logo img {
+        position: static;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 170px;
+    }
+
+    /* Position the navbar horizontally below the logo */
+    .navbar ul {
+        position: static;
+        /* Remove absolute positioning */
+        display: flex;
+        /* Keep links horizontal */
+        justify-content: center;
+        /* Center the links */
+        align-items: center;
+        gap: 15px;
+        /* Add space between links */
+        margin-top: 10px;
+        /* Add space between the logo and navbar */
+        padding: 0;
+    }
+
+    .navbar ul li a {
+        padding: 8px 15px;
+        /* Adjust padding for smaller screens */
+        font-size: 0.9rem;
+        /* Reduce font size slightly */
+    }
+
+    .tagline {
+        margin-top: 0;
+    }
+
+    .tagline h1 {
+        justify-self: center;
+    }
+
+    .tagline h1 span.larger-font {
+        font-size: 2.5rem;
+        /* Reset to default font size */
+    }
+
+    .services-monitor {
+        width: 80%;
+        margin-bottom: 0;
+    }
+
+    .cta-box {
+        margin-top: -25px;
+    }
+
+}
+
+@media (max-width: 560px) {
+    .services-monitor {
+        margin-top: -5px;
+        width: 90%;
+    }
+
+    .tagline p {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .services-monitor {
+        width: 95%;
+    }
+
+    .tagline h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 460px) {
+
+    /* Stack the nav links vertically */
+    .navbar ul {
+        flex-direction: column;
+        /* Stack links vertically */
+        align-items: center;
+        /* Center the links */
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .navbar ul li {
+        margin: 3px;
+    }
+
+    .navbar ul li a {
+        padding: 8px 15px;
+        /* Adjust padding for better visibility */
+        font-size: 0.8rem;
+        /* Reduce font size slightly */
+    }
+
+    /* Adjust spacing for the logo and tagline */
+    .logo img {
+        margin-bottom: 10px;
+        /* Add space below the logo */
+    }
+
+    .tagline {
+        margin-top: -5%;
+        /* Space below the navbar */
+        text-align: center;
+        /* Center-align tagline text */
+        margin-bottom: 5px;
+    }
+
+    .tagline h1 {
+        margin-bottom: 0;
+    }
+
+    .tagline p {
+        margin-top: 0;
+    }
+
+    .services-monitor {
+        width: 100%;
+    }
+
+    .services-overlay h3 {
+        font-size: 1.2rem;
+    }
+
+    .cta-box {
+        padding-top: 0;
+    }
+
+    .cta-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-box p {
+        font-size: 1.0rem;
+        margin-top: 0;
+    }
+
+    .cta-box button {
+        padding: 6px 12px;
+        font-size: 1.0rem;
+    }
+
+}
+
+@media (max-width: 435px) {
+    .services-overlay {
+        margin: 0;
+    }
+
+    .services-overlay h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 405px) {
+    .tagline h1 {
+        font-size: 1.0rem;
+    }
+
+    .services-monitor {
+        width: 110%;
+        margin-left: -20px !important;
+    }
+
+    .cta-box {
+        width: 80%;
+        align-self: center;
+    }
+}
+
+@media (max-width: 365px) {
+    .services-overlay {
+        width: 80%;
+        /* Reduce width for smaller screens */
+        padding: 5px;
+        /* Reduce padding */
+        left: 10%;
+        /* Center it more effectively */
+        top: 5%;
+        /* Adjust positioning */
+
+    }
+
+    .services-overlay h3 {
+        font-size: 1rem;
+        /* Smaller heading font */
+        margin-bottom: 15px;
+        /* Reduce space below the heading */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Show 2 columns instead of 4 */
+        gap: 5px;
+        /* Reduce gap between items */
+    }
+
+    .service-item img {
+        width: 30px;
+        /* Make service icons smaller */
+        height: 30px;
+        margin-bottom: 5px;
+        /* Reduce space below the icon */
+    }
+
+    .service-item p {
+        font-size: 0.8rem;
+        /* Smaller text */
+        margin-top: 10px;
+        /* Reduce space above the text */
+    }
+}
+
+@media (max-width: 344px) {
+    .services-overlay {
+        width: 85%;
+        /* Maximize available space */
+        padding: 5px;
+        /* Minimal padding */
+        left: 8%;
+        /* Center the overlay */
+        top: 5%;
+        /* Adjust positioning */
+    }
+
+    .services-overlay h3 {
+        font-size: 0.9rem;
+        /* Reduce heading font size further */
+        margin-bottom: 10px;
+        /* Reduce space below heading */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Show 2 columns instead of 4 */
+        gap: 15px;
+        /* Reduce gap between items */
+    }
+
+    .service-item img {
+        width: 25px;
+        /* Smaller service icons */
+        height: 25px;
+        margin-bottom: 3px;
+        /* Reduce space below the icon */
+    }
+
+    .service-item p {
+        font-size: 0.7rem;
+        /* Smaller text */
+        margin-top: 5px;
+        /* Reduce space above the text */
+    }
+
+    .cta-box {
+        margin-top: 3px;
+    }
+
 }
