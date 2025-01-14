@@ -49,43 +49,41 @@
 
 /* General Rule: Vertically center content for specific cards */
 .card:first-child,
-.card:nth-child(2) {
+.card:nth-child(2),
+.card:nth-child(3) {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    /* Ensures equal card height */
+    align-items: center;
+    height: 400px;
+    /* Consistent height for all cards */
     padding: 20px;
     /* Same padding for consistency */
 }
 
-/* Center the title (h3) */
+/* Ensure the title (h3) of the Company Overview and Mission Statement cards stays at the top */
+.card:first-child,
+.card:nth-child(2) {
+    justify-content: flex-start;
+    /* Keep the title at the top */
+    padding: 20px;
+    height: 400px;
+    /* Consistent height with other cards */
+}
+
 .card:first-child h3,
 .card:nth-child(2) h3 {
     text-align: center;
     margin-bottom: 15px;
+    /* Space below the title */
 }
 
-/* Left-align the paragraphs (p) */
-.card p {
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-    color: #333;
-    line-height: 1.6;
-    text-align: left;
-}
-
-/* Specific adjustments for the mission paragraph */
-.mission {
-    display: block;
-    /* Resets to block-level behavior */
-    margin: 0 auto;
-    /* Center the paragraph within the card */
+/* Vertically center the Mission Statement paragraph */
+.card:nth-child(2) .mission {
+    margin: auto 0;
+    /* Vertically center the mission paragraph */
     text-align: center;
-    /* Center the mission text horizontally */
     font-family: "Raleway", serif;
     font-style: italic;
-    /* For emphasis */
     font-size: 1.2rem;
     color: #0487D9;
     line-height: 1.6;
@@ -95,40 +93,31 @@
     /* Prevent shrinking */
 }
 
-/* Vertically align the mission text while keeping the card height consistent */
-.card:nth-child(2) {
-    display: flex;
-    align-items: center;
-    /* Vertically center the mission content */
+/* Ensure content is vertically centered for the Core Values card */
+.card:nth-child(3) {
     justify-content: center;
-    /* Horizontally center the mission content */
-    padding: 20px;
-    /* Ensure consistent padding */
-    height: 100%;
-    /* Match height with other cards */
+    /* Vertically center the Core Values content */
 }
 
-.card:nth-child(3) {
-    display: flex;
-    /* Enable flexbox for alignment */
-    flex-direction: column;
-    /* Stack elements vertically */
-    justify-content: center;
-    /* Center content vertically */
-    align-items: flex-start;
-    /* Keep content left-aligned */
-    padding: 20px;
-    /* Maintain consistent padding */
-    height: 100%;
-    /* Ensure consistent height with other cards */
+/* Left-align the paragraphs (p) for all cards */
+.card p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    text-align: left;
+    width: 100%;
 }
 
 /* Core Values Card: Adjust paragraph alignment */
 .card:nth-child(3) p {
     margin: 10px 0;
     /* Add consistent spacing between paragraphs */
+    text-align: left;
+    /* Keep content left-aligned */
+    width: 100%;
+    /* Full width for alignment consistency */
 }
-
 
 /* Carousel Indicators */
 .carousel-indicators {
