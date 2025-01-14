@@ -207,6 +207,11 @@ body {
     /* Reduced top margin to align better */
 }
 
+.cta-box:hover {
+    border-color: white;
+    /* Slightly darker shade for interaction feedback */
+}
+
 .cta-box h2 {
     font-size: 1.8rem;
     margin-bottom: 10px;
