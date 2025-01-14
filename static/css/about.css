@@ -1,0 +1,141 @@
+/* About Us Section */
+#about {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-family: "Raleway", serif;
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    letter-spacing: 2px;
+}
+
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.card {
+    flex: 0 0 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background: #f9f9f9;
+    border: 3px solid #0487D9;
+    border-radius: 10px;
+}
+
+.card h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    color: #0487D9;
+    margin-bottom: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* General Rule: Vertically center content for specific cards */
+.card:first-child,
+.card:nth-child(2),
+.card:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+    /* Consistent height for all cards */
+    padding: 20px;
+    /* Same padding for consistency */
+}
+
+/* Ensure the title (h3) of the Company Overview and Mission Statement cards stays at the top */
+.card:first-child,
+.card:nth-child(2) {
+    justify-content: flex-start;
+    /* Keep the title at the top */
+    padding: 20px;
+    height: 400px;
+    /* Consistent height with other cards */
+}
+
+.card:first-child h3,
+.card:nth-child(2) h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    /* Space below the title */
+}
+
+/* Vertically center the Mission Statement paragraph */
+.card:nth-child(2) .mission {
+    margin: auto 0;
+    /* Vertically center the mission paragraph */
+    text-align: center;
+    font-family: "Raleway", serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #0487D9;
+    line-height: 1.6;
+    max-width: 70%;
+    /* Optional: Reduce width for better visual balance */
+    height: auto;
+    /* Prevent shrinking */
+}
+
+/* Ensure content is vertically centered for the Core Values card */
+.card:nth-child(3) {
+    justify-content: center;
+    /* Vertically center the Core Values content */
+}
+
+/* Left-align the paragraphs (p) for all cards */
+.card p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    text-align: left;
+    width: 100%;
+}
+
+/* Core Values Card: Adjust paragraph alignment */
+.card:nth-child(3) p {
+    margin: 10px 0;
+    /* Add consistent spacing between paragraphs */
+    text-align: left;
+    /* Keep content left-aligned */
+    width: 100%;
+    /* Full width for alignment consistency */
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #0487D9;
+}
