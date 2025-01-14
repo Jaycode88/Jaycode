@@ -1,0 +1,152 @@
+/* About Us Section */
+#about {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-family: "Raleway", serif;
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    letter-spacing: 2px;
+}
+
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.card {
+    flex: 0 0 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background: #f9f9f9;
+    border: 3px solid #0487D9;
+    border-radius: 10px;
+}
+
+.card h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    color: #0487D9;
+    margin-bottom: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* General Rule: Vertically center content for specific cards */
+.card:first-child,
+.card:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    /* Ensures equal card height */
+    padding: 20px;
+    /* Same padding for consistency */
+}
+
+/* Center the title (h3) */
+.card:first-child h3,
+.card:nth-child(2) h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Left-align the paragraphs (p) */
+.card p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Specific adjustments for the mission paragraph */
+.mission {
+    display: block;
+    /* Resets to block-level behavior */
+    margin: 0 auto;
+    /* Center the paragraph within the card */
+    text-align: center;
+    /* Center the mission text horizontally */
+    font-family: "Raleway", serif;
+    font-style: italic;
+    /* For emphasis */
+    font-size: 1.2rem;
+    color: #0487D9;
+    line-height: 1.6;
+    max-width: 70%;
+    /* Optional: Reduce width for better visual balance */
+    height: auto;
+    /* Prevent shrinking */
+}
+
+/* Vertically align the mission text while keeping the card height consistent */
+.card:nth-child(2) {
+    display: flex;
+    align-items: center;
+    /* Vertically center the mission content */
+    justify-content: center;
+    /* Horizontally center the mission content */
+    padding: 20px;
+    /* Ensure consistent padding */
+    height: 100%;
+    /* Match height with other cards */
+}
+
+.card:nth-child(3) {
+    display: flex;
+    /* Enable flexbox for alignment */
+    flex-direction: column;
+    /* Stack elements vertically */
+    justify-content: center;
+    /* Center content vertically */
+    align-items: flex-start;
+    /* Keep content left-aligned */
+    padding: 20px;
+    /* Maintain consistent padding */
+    height: 100%;
+    /* Ensure consistent height with other cards */
+}
+
+/* Core Values Card: Adjust paragraph alignment */
+.card:nth-child(3) p {
+    margin: 10px 0;
+    /* Add consistent spacing between paragraphs */
+}
+
+
+/* Carousel Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #0487D9;
+}
