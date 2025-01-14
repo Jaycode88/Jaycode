@@ -103,7 +103,6 @@ body {
 .tagline h1 {
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: bold;
-    margin: 10px 0;
     line-height: 1.2;
 }
 
@@ -198,7 +197,7 @@ body {
     /* Increased padding for larger size */
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 5px solid #0487D9;
     width: 100%;
     max-width: 650px;
     /* Increased maximum width */
@@ -247,6 +246,30 @@ body {
 
     .services-overlay h3 {
         margin-bottom: 50px;
+    }
+
+    #hero {
+        grid-template-rows: auto auto auto;
+        /* Explicitly define row sizes */
+        row-gap: 0;
+        /* Remove any additional gap between rows */
+    }
+
+    .tagline {
+        margin-top: 0;
+        /* Reset any extra margin */
+        padding-top: 0;
+        /* Ensure no extra padding */
+    }
+
+    .navbar ul {
+        top: 20px;
+        /* Bring navbar closer to the top */
+    }
+
+    .logo img {
+        top: 10px;
+        /* Reduce space above the logo */
     }
 
 }
