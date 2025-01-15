@@ -1,3 +1,4 @@
+/* Carousel */
 const track = document.querySelector('.carousel-track');
 const indicators = document.querySelectorAll('.indicator');
 let currentSlide = 0;
@@ -78,3 +79,32 @@ startAutoSlide();
 // Pause auto-slide when interacting with the carousel
 document.querySelector('.carousel').addEventListener('mouseover', stopAutoSlide);
 document.querySelector('.carousel').addEventListener('mouseout', startAutoSlide);
+
+/* Portfolio text image overlay */
+
+document.querySelectorAll('.portfolio-image').forEach(image => {
+    image.addEventListener('mousemove', e => {
+        const bounds = image.getBoundingClientRect();
+        const x = e.clientX - bounds.left;
+        const half = bounds.width / 2;
+
+        if (x < half) {
+            image.querySelector('.tech-overlay').style.opacity = '1';
+            image.querySelector('.tech-overlay').style.transform = 'translateX(0)';
+            image.querySelector('.desc-overlay').style.opacity = '0';
+            image.querySelector('.desc-overlay').style.transform = 'translateX(100%)';
+        } else {
+            image.querySelector('.desc-overlay').style.opacity = '1';
+            image.querySelector('.desc-overlay').style.transform = 'translateX(0)';
+            image.querySelector('.tech-overlay').style.opacity = '0';
+            image.querySelector('.tech-overlay').style.transform = 'translateX(-100%)';
+        }
+    });
+
+    image.addEventListener('mouseleave', () => {
+        image.querySelector('.tech-overlay').style.opacity = '0';
+        image.querySelector('.tech-overlay').style.transform = 'translateX(-100%)';
+        image.querySelector('.desc-overlay').style.opacity = '0';
+        image.querySelector('.desc-overlay').style.transform = 'translateX(100%)';
+    });
+});
