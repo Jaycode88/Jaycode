@@ -52,6 +52,10 @@
     color: white;
 }
 
+.white-bg {
+    background-color: #fff;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .tech-card img {
@@ -75,4 +79,16 @@
     .tech-card p {
         font-size: 0.8rem;
     }
+}
+
+@media (max-width: 360px) {
+    .technologies-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Enforce two columns */
+        gap: 10px;
+        /* Slightly smaller gap for compact layout */
+    }
+
+
+
 }
