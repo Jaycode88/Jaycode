@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/static/css/services.css">
     <link rel="stylesheet" href="/static/css/technologies.css">
     <link rel="stylesheet" href="/static/css/portfolio.css">
+    <link rel="stylesheet" href="/static/css/contact.css">
     <script src="/static/js/script.js" defer></script>
     <title>Jaycode</title>
 </head>
@@ -339,6 +340,47 @@
             <button class="cta-button">Contact Us</button>
         </div>
     </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <p class="flash-{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/" class="contact-form">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." rows="5" required></textarea>
+            </div>
+            <div class="form-group agreement">
+                <p>By sending this message, you agree to our T&Cs and privacy policy.</p>
+                <label>
+                    Would you like to receive our newsletter? 
+                    <input type="checkbox" name="newsletter">
+                </label>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="send-button">Send</button>
+                <button type="reset" class="reset-button">Reset</button>
+            </div>
+        </form>
+    </section>
+    
 
 </body>
 </html>
