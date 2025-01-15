@@ -34,17 +34,19 @@
     background: #f9f9f9;
     border: 3px solid #0487D9;
     border-radius: 10px;
+    overflow: hidden;
+    /* Ensure content doesn't overflow */
+    word-wrap: break-word;
+    /* Prevent long words from overflowing */
 }
 
+/* Titles */
 .card h3 {
     font-family: "Raleway", sans-serif;
     font-size: 1.5rem;
-    color: #0487D9;
+    color: #023859;
     margin-bottom: 10px;
-}
-
-.bold {
-    font-weight: bold;
+    text-align: center;
 }
 
 /* General Rule: Vertically center content for specific cards */
@@ -54,27 +56,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 400px;
-    /* Consistent height for all cards */
+    height: auto;
+    /* Allow cards to adjust height dynamically */
+    min-height: 400px;
+    /* Set a minimum height for consistency */
     padding: 20px;
-    /* Same padding for consistency */
+    /* Consistent padding */
 }
 
-/* Ensure the title (h3) of the Company Overview and Mission Statement cards stays at the top */
-.card:first-child,
-.card:nth-child(2) {
+/* Company Overview Card: Vertically center the paragraph */
+.card:first-child {
     justify-content: flex-start;
     /* Keep the title at the top */
     padding: 20px;
-    height: 400px;
-    /* Consistent height with other cards */
+    position: relative;
+    /* Enable positioning for paragraph alignment */
 }
 
+.card:first-child p {
+    margin: auto 0;
+    /* Vertically center the paragraph within the card */
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    width: 100%;
+}
+
+/* Ensure the title (h3) of the Company Overview and Mission Statement cards stays at the top */
 .card:first-child h3,
 .card:nth-child(2) h3 {
-    text-align: center;
     margin-bottom: 15px;
     /* Space below the title */
+    align-self: center;
+    /* Keep title centered horizontally */
 }
 
 /* Vertically center the Mission Statement paragraph */
@@ -95,11 +111,22 @@
 
 /* Ensure content is vertically centered for the Core Values card */
 .card:nth-child(3) {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    /* Vertically center the Core Values content */
+    /* Vertically center the content (excluding the title) */
+    align-items: flex-start;
+    /* Keep content left-aligned horizontally */
+    height: auto;
+    min-height: 400px;
+    /* Maintain consistent height with other cards */
+    padding: 20px;
+    /* Maintain consistent padding */
+    position: relative;
+    /* Enable positioning for the title */
 }
 
-/* Left-align the paragraphs (p) for all cards */
+/* Paragraphs (p) */
 .card p {
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
@@ -114,9 +141,104 @@
     margin: 10px 0;
     /* Add consistent spacing between paragraphs */
     text-align: left;
-    /* Keep content left-aligned */
+    /* Align the text to the left */
+    line-height: 1.6;
+    /* Maintain consistent line height */
     width: 100%;
-    /* Full width for alignment consistency */
+    /* Span the full width of the card */
+}
+
+.card:nth-child(3) h3 {
+    position: absolute;
+    top: 20px;
+    /* Position the title at the top of the card */
+    left: 50%;
+    /* Center the title horizontally */
+    transform: translateX(-50%);
+    /* Adjust for exact centering */
+    margin-bottom: 15px;
+    /* Add space below the title */
+    text-align: center;
+    /* Center the text within the title */
+    width: 100%;
+    /* Ensure the title spans the full card width */
+}
+
+/* Vertically center the content for the fourth card */
+.card:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Vertically center the content */
+    align-items: center;
+    /* Center align the content horizontally if needed */
+    height: auto;
+    min-height: 400px;
+    /* Ensure consistent card height */
+    padding: 20px;
+    /* Maintain consistent padding */
+}
+
+/* Ensure paragraphs in the fourth card are styled appropriately */
+.card:nth-child(4) p {
+    text-align: left;
+    /* Keep the text left-aligned */
+    width: 100%;
+    /* Ensure paragraphs span the full width of the card */
+    line-height: 1.6;
+    /* Maintain consistent line height */
+    margin: 10px 0;
+    /* Add spacing between paragraphs */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 835px) {
+    .card h3 {
+        font-size: 1.2rem;
+        /* Adjust title size for smaller screens */
+    }
+
+    .card p,
+    .card:nth-child(3) p {
+        font-size: 0.9rem;
+        /* Reduce text size slightly */
+    }
+}
+
+@media (max-width: 575px) {
+    .card {
+        padding: 15px;
+        /* Reduce padding for smaller screens */
+        min-height: auto;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+        /* Smaller font for compact view */
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 335px) {
+    .card:nth-child(2) {
+        padding: 15px;
+        /* Adjust padding for smaller screens */
+    }
+
+    .card:nth-child(2) .mission {
+        font-size: 1rem;
+        /* Reduce font size */
+        max-width: 90%;
+        /* Allow more text width */
+    }
+}
+
+@media (max-width: 335px) {
+    .card:nth-child(4) {
+        padding: 15px;
+        /* Adjust padding for smaller screens */
+    }
 }
 
 /* Carousel Indicators */
