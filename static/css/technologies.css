@@ -1,0 +1,78 @@
+/* Technologies Section */
+#technologies {
+    margin-top: 50px;
+}
+
+#technologies .section-title {
+    font-family: "Raleway", sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    /* Center the section title */
+}
+
+
+.technologies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.tech-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.tech-card img {
+    width: 70px;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.tech-card img:hover {
+    transform: scale(1.1);
+}
+
+.tech-card p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .tech-card img {
+        width: 50px;
+    }
+
+    .tech-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .tech-card img {
+        width: 40px;
+    }
+
+    .tech-card p {
+        font-size: 0.8rem;
+    }
+}

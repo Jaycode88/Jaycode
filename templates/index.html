@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/about.css">
     <link rel="stylesheet" href="/static/css/services.css">
+    <link rel="stylesheet" href="/static/css/technologies.css">
     <script src="/static/js/script.js" defer></script>
     <title>Jaycode</title>
 </head>
@@ -149,47 +150,81 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <h2 class="section-title">SERVICES</h2>
-        <div class="services-container">
-            <!-- Service Card 1 -->
-            <div class="service-card">
-                <img src="/static/images/icon-design.svg" alt="Web Design Icon">
-                <h3>Web Design</h3>
-                <p>
-                    Craft visually appealing, responsive websites tailored to your brand. Our designs prioritize user experience and functionality, ensuring your site looks great and performs seamlessly on any device. Whether you need a complete redesign or a fresh new look, we deliver results that make an impact.
-                </p>
+    <!-- Combined Services and Technologies Section -->
+    <div id="services-technologies-wrapper">
+        
+        <!-- Services Section -->
+        <section id="services">
+            <h2 class="section-title">SERVICES</h2>
+            <div class="services-container">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <img src="/static/images/icon-design.svg" alt="Web Design Icon">
+                    <h3>Web Design</h3>
+                    <p>
+                        Craft visually appealing, responsive websites tailored to your brand. Our designs prioritize user experience and functionality, ensuring your site looks great and performs seamlessly on any device. Whether you need a complete redesign or a fresh new look, we deliver results that make an impact.
+                    </p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <img src="/static/images/icon-development.svg" alt="Full Stack Development Icon">
+                    <h3>Full Stack Software Development</h3>
+                    <p>
+                        From scalable web applications to custom software solutions, we bring your ideas to life. Our expertise spans front-end, back-end, and full-stack development, leveraging modern technologies to deliver secure, efficient, and powerful solutions designed to grow with your business.
+                    </p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <img src="/static/images/icon-hosting.svg" alt="Web Hosting Icon">
+                    <h3>Website & Database Hosting</h3>
+                    <p>
+                        Keep your website and data secure, fast, and always accessible with our reliable hosting solutions. We provide optimized server performance, routine backups, and scalable plans to meet your business’s evolving needs.
+                    </p>
+                </div>
+                <!-- Service Card 4 -->
+                <div class="service-card">
+                    <img src="/static/images/icon-support.svg" alt="Support Icon">
+                    <h3>Support</h3>
+                    <p>
+                        Enjoy peace of mind with our ongoing support services. From troubleshooting to updates and maintenance, we’re here to ensure your website and systems run smoothly, so you can focus on growing your business.
+                    </p>
+                </div>
             </div>
-            <!-- Service Card 2 -->
-            <div class="service-card">
-                <img src="/static/images/icon-development.svg" alt="Full Stack Development Icon">
-                <h3>Full Stack Software Development</h3>
-                <p>
-                    From scalable web applications to custom software solutions, we bring your ideas to life. Our expertise spans front-end, back-end, and full-stack development, leveraging modern technologies to deliver secure, efficient, and powerful solutions designed to grow with your business.
-                </p>
+            <div class="cta">
+                <h3>Let’s Discuss How We Can Help You</h3>
+                <button class="cta-button">Contact Us</button>
             </div>
-            <!-- Service Card 3 -->
-            <div class="service-card">
-                <img src="/static/images/icon-hosting.svg" alt="Web Hosting Icon">
-                <h3>Website & Database Hosting</h3>
-                <p>
-                    Keep your website and data secure, fast, and always accessible with our reliable hosting solutions. We provide optimized server performance, routine backups, and scalable plans to meet your business’s evolving needs.
-                </p>
+        </section>
+
+        <!-- Technologies Section -->
+    <section id="technologies">
+        <h2 class="section-title">Technologies We Use</h2>
+        <div class="technologies-grid">
+            <!-- Individual Technology Cards -->
+            <div class="tech-card">
+                <img src="/static/images/html-icon.png" alt="HTML">
+                <p>HTML</p>
             </div>
-            <!-- Service Card 4 -->
-            <div class="service-card">
-                <img src="/static/images/icon-support.svg" alt="Support Icon">
-                <h3>Support</h3>
-                <p>
-                    Enjoy peace of mind with our ongoing support services. From troubleshooting to updates and maintenance, we’re here to ensure your website and systems run smoothly, so you can focus on growing your business.
-                </p>
+            <div class="tech-card">
+                <img src="/static/images/css-icon.png" alt="CSS">
+                <p>CSS</p>
             </div>
-        </div>
-        <div class="cta">
-            <h3>Let’s Discuss How We Can Help You</h3>
-            <button class="cta-button">Contact Us</button>
+            <div class="tech-card">
+                <img src="/static/images/js-icon.png" alt="JavaScript">
+                <p>JavaScript</p>
+            </div>
+            <div class="tech-card">
+                <img src="/static/images/jquery-icon.png" alt="jQuery">
+                <p>jQuery</p>
+            </div>
+            <div class="tech-card">
+                <img src="/static/images/python-icon.png" alt="Python">
+                <p>Python</p>
+            </div>
+            <!-- Add more technologies as needed -->
         </div>
     </section>
+</div>
+
 </body>
 </html>
