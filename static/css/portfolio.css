@@ -51,19 +51,47 @@
 .desc-overlay {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    width: 50%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: left;
+    text-align: center;
+    padding: 20px;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    pointer-events: none;
+    /* Prevent interaction until visible */
+
+}
+
+.tech-overlay {
+    left: 0;
+    transform: translateX(-100%);
+    /* Initially hide off the left side */
+}
+
+/* Positioning the desc-overlay on the right */
+.desc-overlay {
+    right: 0;
+    transform: translateX(100%);
+    /* Initially hide off the right side */
+}
+
+/* Hover behavior: display the overlays */
+.portfolio-image:hover .tech-overlay {
+    opacity: 1;
+    transform: translateX(0);
+    /* Bring it into view */
+}
+
+.portfolio-image:hover .desc-overlay {
+    opacity: 1;
+    transform: translateX(0);
+    /* Bring it into view */
 }
 
 .tech-overlay h3,
@@ -71,15 +99,39 @@
     margin: 10px 0;
 }
 
-.portfolio-image:hover .tech-overlay {
-    opacity: 1;
+@media (max-width: 768px) {
+
+    .tech-overlay,
+    .desc-overlay {
+        width: 100%;
+        transform: translateY(100%);
+        /* Stack vertically below the image */
+        height: auto;
+    }
+
+    .tech-overlay {
+        top: 0;
+        left: 0;
+    }
+
+    .desc-overlay {
+        top: auto;
+        bottom: 0;
+        left: 0;
+    }
+
+    .portfolio-image:hover .tech-overlay,
+    .portfolio-image:hover .desc-overlay {
+        transform: translateY(0);
+        /* Bring into view on hover */
+    }
 }
 
 /* Testimonial */
 .testimonial {
     max-width: 800px;
     background-color: #0487D9;
-    color: #fff;
+    color: #000;
     padding: 20px;
     border-radius: 10px;
     font-style: italic;
