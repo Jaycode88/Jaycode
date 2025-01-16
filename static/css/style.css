@@ -14,6 +14,11 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 /* fonts */
 .great-vibes {
     font-family: "Great Vibes", serif;
@@ -37,6 +42,10 @@ body {
 
 .larger-font {
     font-size: 4rem;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 /* Hero Section */

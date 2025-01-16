@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/about.css">
+    <link rel="stylesheet" href="/static/css/services.css">
+    <link rel="stylesheet" href="/static/css/technologies.css">
+    <link rel="stylesheet" href="/static/css/portfolio.css">
+    <link rel="stylesheet" href="/static/css/contact.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
     <script src="/static/js/script.js" defer></script>
     <title>Jaycode</title>
 </head>
@@ -13,7 +18,7 @@
     <section id="hero">
         <!-- Logo -->
         <div class="logo">
-            <img src="/static/images/Jaycode-logo.png" alt="JayCode Logo">
+           <a href="#hero"><img src="/static/images/Jaycode-logo.png" alt="JayCode Logo"></a>
         </div>
     
         <!-- Navigation -->
@@ -65,7 +70,7 @@
             <div class="cta-box">
                 <h2>Get Started Today</h2>
                 <p>Send us a message about your project</p>
-                <button>Contact Us</button>
+                <button><a href="#contact">Contact Us</a></button>
             </div>
         </div>
     </section>
@@ -121,9 +126,6 @@
                         <span class="bold">Comprehensive Services:</span> We provide end-to-end solutions, including web design, full-stack development, hosting, and ongoing support—all under one roof.
                     </p>
                     <p>
-                        <span class="bold">Comprehensive Services:</span> We provide end-to-end solutions, including web design, full-stack development, hosting, and ongoing support—all under one roof.
-                    </p>
-                    <p>
                         <span class="bold">Small Business Expertise:</span> With a background in running small businesses, we understand your challenges and are dedicated to helping you achieve your goals.
                     </p>
                     <p>
@@ -147,5 +149,257 @@
             </div>
         </div>
     </section>
+
+    <!-- Combined Services and Technologies Section -->
+    <div id="services-technologies-wrapper">
+        
+        <!-- Services Section -->
+        <section id="services">
+            <h2 class="section-title">SERVICES</h2>
+            <div class="services-container">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <img src="/static/images/icon-design.svg" alt="Web Design Icon">
+                    <h3>Web Design</h3>
+                    <p>
+                        Craft visually appealing, responsive websites tailored to your brand. Our designs prioritize user experience and functionality, ensuring your site looks great and performs seamlessly on any device. Whether you need a complete redesign or a fresh new look, we deliver results that make an impact.
+                    </p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <img src="/static/images/icon-development.svg" alt="Full Stack Development Icon">
+                    <h3>Full Stack Software Development</h3>
+                    <p>
+                        From scalable web applications to custom software solutions, we bring your ideas to life. Our expertise spans front-end, back-end, and full-stack development, leveraging modern technologies to deliver secure, efficient, and powerful solutions designed to grow with your business.
+                    </p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <img src="/static/images/icon-hosting.svg" alt="Web Hosting Icon">
+                    <h3>Website & Database Hosting</h3>
+                    <p>
+                        Keep your website and data secure, fast, and always accessible with our reliable hosting solutions. We provide optimized server performance, routine backups, and scalable plans to meet your business’s evolving needs.
+                    </p>
+                </div>
+                <!-- Service Card 4 -->
+                <div class="service-card">
+                    <img src="/static/images/icon-support.svg" alt="Support Icon">
+                    <h3>Support</h3>
+                    <p>
+                        Enjoy peace of mind with our ongoing support services. From troubleshooting to updates and maintenance, we’re here to ensure your website and systems run smoothly, so you can focus on growing your business.
+                    </p>
+                </div>
+            </div>
+            <div class="cta">
+                <h3>Let’s Discuss How We Can Help You</h3>
+                <button class="cta-button"><a href="#contact">Contact Us</a></button>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section id="technologies">
+            <h2 class="section-title">Technologies We Use</h2>
+            <div class="technologies-grid">
+                <!-- Individual Technology Cards -->
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/htmllogo.png" alt="HTML">
+                    <p>HTML</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/csslogo.png" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/jslogo.png" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/jquery.png" alt="jQuery">
+                    <p>jQuery</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/pythonlogo.png" alt="Python">
+                    <p>Python</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/django.png" alt="Django">
+                    <p>Django</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/jinja2logo.png" class="white-bg" alt="Jinja">
+                    <p>Jinja</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/bootstraplogo.png" alt="Bootstrap">
+                    <p>Bootstrap</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/materializelogo.png" alt="Materialize">
+                    <p>Materialize</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/gitlogo.png" alt="Git">
+                    <p>Git</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/githublogo.png" alt="GitHub">
+                    <p>Github</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/sqllitelogo.png" alt="SQL Lite">
+                    <p>SQL Lite</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/mongodb.png" alt="MongoDB">
+                    <p>MongoDB</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/postgresqllogo.png" alt="Postgre SQL">
+                    <p>Postgre SQL</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/mysql.png" alt="MY SQL">
+                    <p>MY SQL</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/google-fonts-logo.png" alt="Google Fonts">
+                    <p>Google Fonts</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/stripe.png" alt="Stripe">
+                    <p>Stripe</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/flask.png" class="white-bg" alt="Flask">
+                    <p>Flask</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/nginxlogo.png" alt="NGinx">
+                    <p>NGinx</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/gunicornlogo.png" alt="GUnicorn">
+                    <p>GUnicorn</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/ai.png" class="white-bg" alt="A.I Assistance">
+                    <p>A.I Assistance</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/vscodelogo.png" alt="VS Code">
+                    <p>VS Code</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/gimplogo.png" alt="G.I.M.P">
+                    <p>G.I.M.P</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/figmalogo.png" alt="Figma">
+                    <p>Figma</p>
+                </div>
+                <div class="tech-card">
+                    <img src="/static/images/techlogos/canvalogo.png" alt="Canva">
+                    <p>Canva</p>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+
+    <!-- Portfolio & Testimonials Section -->
+    <section id="portfolio">
+        <h2 class="section-title">Portfolio & Testimonials</h2>
+        <div class="portfolio-container">
+            <!-- Portfolio Item -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="/static/images/kicassoo.jpg" alt="Kicasso Project Screenshot">
+                    <div class="tech-overlay">
+                        <h3>Technologies:</h3>
+                        <p>The site was developed on the Django framework using Python as well as HTML, CSS, and jQuery. The application uses an SQL database and the Printful and Stripe APIs.</p>
+                    </div>
+                    <div class="desc-overlay">
+                        <p>Kicasso was created for a local abstract artist to showcase her work and sell prints of her art on selected products. The site and database are hosted on the server here at Jaycode.</p>
+                    </div>
+                </div>
+                <div class="testimonial bold">
+                    <blockquote>
+                        "Working with JayCode was a great process. The support from start to finish and ongoing is applaudable."
+                    </blockquote>
+                    <cite class="bold">- Kicasso</cite>
+                </div>
+            </div>
+            <!-- Repeat for more portfolio items -->
+        </div>
+
+        <!-- Call-to-Action -->
+        <div class="portfolio-cta">
+            <h3>Let’s Discuss How We Can Help You</h3>
+            <button class="cta-button"><a href="#contact">Contact Us</a></button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <p class="flash-{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/" class="contact-form">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." rows="5" required></textarea>
+            </div>
+            <div class="form-group agreement">
+                <p>By sending this message, you agree to our T&Cs and privacy policy.</p>
+                <label>
+                    Would you like to receive our newsletter? 
+                    <input type="checkbox" name="newsletter">
+                </label>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="send-button">Send</button>
+                <button type="reset" class="reset-button">Reset</button>
+            </div>
+        </form>
+    </section>
+    
+    <!-- Footer Section   -->
+    <footer id="footer">
+        <div class="footer-content">
+            <!-- Left Side: Logo and Tagline -->
+            <div class="footer-left">
+                <img src="/static/images/Jaycode-logo.png" alt="JayCode Logo" class="footer-logo">
+                <p class="footer-tagline">
+                    <span class="great-vibes boast-font">Design</span>, 
+                    <span class="graduate">Develop</span>, 
+                    <span class="bold">Deliver</span>
+                </p>
+                <p class="footer-email">Support@jaycode.co.uk</p>
+            </div>
+    
+            <!-- Right Side: Links -->
+            <div class="footer-right">
+                <a href="#terms">Terms and Conditions</a>
+                <a href="#privacy">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+    
 </body>
 </html>

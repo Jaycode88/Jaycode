@@ -1,0 +1,121 @@
+/* Footer Section */
+#footer {
+    background-color: #fff;
+    color: #000;
+    padding: 20px 40px;
+    border-top: 2px solid #0487D9;
+    /* Optional: Add a top border */
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+}
+
+.boast-font {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center-align the content */
+    gap: 10px;
+    text-align: center;
+    /* Center-align the text */
+}
+
+.footer-logo {
+    width: 100px;
+    height: auto;
+}
+
+.footer-tagline {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.footer-tagline span {
+    display: inline-block;
+}
+
+.footer-tagline .great-vibes {
+    font-family: "Great Vibes", serif;
+    font-weight: 400;
+}
+
+.footer-tagline .graduate {
+    font-family: "Graduate", serif;
+    font-weight: 400;
+}
+
+.footer-tagline .bold {
+    font-weight: bold;
+}
+
+.footer-email {
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.footer-right a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+    color: #0487D9;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-left {
+        align-items: center;
+    }
+
+    .footer-right {
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo {
+        width: 80px;
+    }
+
+    .footer-tagline {
+        font-size: 1rem;
+    }
+
+    .footer-email {
+        font-size: 0.9rem;
+    }
+
+    .footer-right a {
+        font-size: 0.9rem;
+    }
+}
