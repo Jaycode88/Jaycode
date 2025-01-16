@@ -1,0 +1,176 @@
+/* Portfolio Section */
+#portfolio {
+    padding: 50px 20px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}
+
+#portfolio .section-title {
+    font-family: "Raleway", sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    color: #000;
+}
+
+/* Portfolio Container */
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Portfolio Item */
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Portfolio Image and Overlays */
+.portfolio-image {
+    position: relative;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tech-overlay,
+.desc-overlay {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    pointer-events: none;
+    /* Prevent interaction until visible */
+
+}
+
+.tech-overlay {
+    left: 0;
+    transform: translateX(-100%);
+    /* Initially hide off the left side */
+}
+
+/* Positioning the desc-overlay on the right */
+.desc-overlay {
+    right: 0;
+    transform: translateX(100%);
+    /* Initially hide off the right side */
+}
+
+/* Hover behavior: display the overlays */
+.portfolio-image:hover .tech-overlay {
+    opacity: 1;
+    transform: translateX(0);
+    /* Bring it into view */
+}
+
+.portfolio-image:hover .desc-overlay {
+    opacity: 1;
+    transform: translateX(0);
+    /* Bring it into view */
+}
+
+.tech-overlay h3,
+.desc-overlay p {
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+
+    .tech-overlay,
+    .desc-overlay {
+        width: 100%;
+        transform: translateY(100%);
+        /* Stack vertically below the image */
+        height: auto;
+    }
+
+    .tech-overlay {
+        top: 0;
+        left: 0;
+    }
+
+    .desc-overlay {
+        top: auto;
+        bottom: 0;
+        left: 0;
+    }
+
+    .portfolio-image:hover .tech-overlay,
+    .portfolio-image:hover .desc-overlay {
+        transform: translateY(0);
+        /* Bring into view on hover */
+    }
+}
+
+/* Testimonial */
+.testimonial {
+    max-width: 800px;
+    background-color: #0487D9;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    font-style: italic;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial blockquote {
+    font-size: 1.2rem;
+    margin: 0;
+    text-align: center;
+}
+
+.testimonial cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* CTA Section */
+.portfolio-cta {
+    margin-top: 40px;
+}
+
+.portfolio-cta h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,141 @@
+/* Contact Section Styles */
+#contact {
+    background-image: url('/static/images/hero-bg.jpg');
+    /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    color: black;
+    text-align: center;
+}
+
+#contact .section-title {
+    font-family: "Raleway", sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+/* Form Styling */
+.contact-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 5px solid #0487D9;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    font-family: "Raleway", sans-serif;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    border: 1px solid #023859;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #0487D9;
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form .agreement {
+    font-size: 0.9rem;
+    text-align: left;
+    color: black;
+}
+
+.contact-form .agreement p {
+    margin: 10px 0;
+}
+
+.contact-form .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.contact-form .send-button,
+.contact-form .reset-button {
+    flex: 1;
+    padding: 10px 15px;
+    font-family: "Raleway", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form .send-button:hover,
+.contact-form .reset-button:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+.flash-success {
+    color: #4caf50;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.flash-error {
+    color: #f44336;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-form label {
+        font-size: 0.9rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .contact-form .form-buttons button {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

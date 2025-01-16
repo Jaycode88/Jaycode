@@ -12,3 +12,10 @@ __pycache__/
 
 # Environment variables
 .env
+
+# Credentials for google cloud
+credentials.json
+
+# pickle token
+token.pickle
+token.json
