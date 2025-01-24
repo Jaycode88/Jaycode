@@ -54,13 +54,16 @@ a {
     background-size: cover;
     background-position: center;
     min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    /* Adjust grid rows for balance */
-    align-items: start;
-    /* Align items closer to the top */
-    padding: 0;
-    /* Remove vertical padding */
+    /* Ensure at least viewport height */
+    display: flex;
+    /* Use flexbox for easier vertical alignment */
+    flex-direction: column;
+    /* Stack children vertically */
+    justify-content: flex-start;
+    /* Align items to the top */
+    padding: 20px 0;
+    /* Add padding for breathing room */
+    overflow: hidden;
 }
 
 /* Logo */
@@ -107,6 +110,7 @@ a {
     /* Reduced top margin */
     margin-bottom: 0;
     /* No extra space below */
+    margin-top: 50px;
 }
 
 .tagline h1 {
@@ -118,8 +122,9 @@ a {
 .tagline p {
     font-size: clamp(1rem, 3vw, 2rem);
     margin-top: 10px;
-    text-align: center;
+    text-align: right;
     margin-bottom: 10px;
+    margin-right: 5%;
 }
 
 /* Services Monitor Section */
@@ -271,8 +276,6 @@ a {
     }
 
     .tagline {
-        margin-top: 0;
-        /* Reset any extra margin */
         padding-top: 0;
         /* Ensure no extra padding */
     }
@@ -293,20 +296,23 @@ a {
     .services-overlay h3 {
         margin-bottom: 50px;
     }
+
+    .tagline {
+        margin-bottom: 10%;
+    }
 }
 
 @media (max-width: 1100px) {
     .services-overlay p {
         font-size: 1rem;
     }
+
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
     #hero {
         grid-template-rows: auto auto auto;
         /* Use explicit rows to avoid stretching */
-        align-items: flex-start;
-        /* Ensures tagline stays near the top */
     }
 
     .navbar ul {
@@ -314,8 +320,14 @@ a {
     }
 
     .tagline {
-        margin-top: 15px;
-        /* Reduce space above the tagline */
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    .tagline p {
+        text-align: right;
+        margin: 0;
+        margin-right: 5%;
     }
 
     .navbar ul {
@@ -328,6 +340,7 @@ a {
     }
 }
 
+
 @media (min-width: 768px) and (max-width: 915px) {
 
 
@@ -338,9 +351,7 @@ a {
     .services-overlay p {
         margin-top: 10px;
     }
-}
 
-@media (min-width: 768px) and (max-width: 915px) {
     .cta-box {
         margin-top: 10px;
     }
@@ -360,13 +371,18 @@ a {
     }
 
     .tagline {
+        margin-top: 15%;
         padding: 5px 5%;
         text-align: left;
-        margin-left: 5%;
+        margin-left: 2%;
     }
 
     .tagline h1 {
         padding: 0;
+    }
+
+    .tagline p {
+        text-align: right;
     }
 
     .services-monitor {
@@ -488,7 +504,7 @@ a {
     }
 
     .tagline {
-        margin-top: 40px;
+        margin-top: 80px;
         /* Add more space between the nav and the tagline */
         padding: 0 5%;
         /* Ensure consistent padding */
@@ -518,6 +534,7 @@ a {
         margin: 0 auto;
         margin-top: 10px;
         width: 170px;
+        margin-bottom: 10px;
     }
 
     /* Position the navbar horizontally below the logo */
@@ -544,7 +561,7 @@ a {
     }
 
     .tagline {
-        margin-top: 0;
+        margin-top: 30px;
     }
 
     .tagline h1 {
@@ -558,18 +575,19 @@ a {
 
     .services-monitor {
         width: 80%;
-        margin-bottom: 0;
+        margin-bottom: 20px;
     }
 
     .cta-box {
-        margin-top: -25px;
+        margin-top: 0;
+        margin-bottom: 10px;
     }
 
 }
 
 @media (max-width: 577px) {
     .services-monitor {
-        margin-top: -5px;
+        margin-top: 10px;
         width: 90%;
     }
 
@@ -612,12 +630,12 @@ a {
 
     /* Adjust spacing for the logo and tagline */
     .logo img {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         /* Less space below the logo */
     }
 
     .tagline {
-        margin-top: 0;
+        margin-top: 20px;
         /* Space below the navbar */
         text-align: center;
         /* Center-align tagline text */
