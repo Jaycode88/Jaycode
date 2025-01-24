@@ -510,13 +510,12 @@ a {
 
     /* Stack the nav links vertically */
     .navbar ul {
-        flex-direction: column;
-        /* Stack links vertically */
         align-items: center;
         /* Center the links */
         margin-top: 0;
         margin-bottom: 0;
         padding: 0;
+        gap: 5px;
     }
 
     .navbar ul li {
@@ -524,20 +523,19 @@ a {
     }
 
     .navbar ul li a {
-        padding: 8px 15px;
-        /* Adjust padding for better visibility */
-        font-size: 0.8rem;
-        /* Reduce font size slightly */
+        padding: 5px 10px;
+        font-size: 0.7rem;
+        /* Make font size smaller */
     }
 
     /* Adjust spacing for the logo and tagline */
     .logo img {
-        margin-bottom: 10px;
-        /* Add space below the logo */
+        margin-bottom: 5px;
+        /* Less space below the logo */
     }
 
     .tagline {
-        margin-top: -5%;
+        margin-top: 0;
         /* Space below the navbar */
         text-align: center;
         /* Center-align tagline text */
@@ -695,4 +693,46 @@ a {
         margin-top: 3px;
     }
 
+}
+
+@media (max-width: 330px) {
+
+    /* Navbar adjustments */
+    .navbar ul {
+        flex-wrap: wrap;
+        /* Allow links to wrap into rows */
+        justify-content: center;
+        /* Center the wrapped rows */
+        gap: 10px;
+        /* Add some spacing between rows */
+    }
+
+    .navbar ul li {
+        width: 45%;
+        /* Ensure each link takes up 45% of the row width */
+        text-align: center;
+        /* Center the text in each link */
+    }
+
+    .navbar ul li a {
+        padding: 8px 10px;
+        /* Adjust padding for smaller links */
+        font-size: 0.7rem;
+        /* Reduce font size further */
+    }
+
+    /* Reduce margin below the logo */
+    .logo img {
+        margin-bottom: 5px;
+        /* Less space below the logo */
+    }
+
+    /* Maintain proper spacing for tagline */
+    .tagline {
+        margin-top: 10px;
+    }
+
+    .tagline h1 {
+        margin-top: 10px;
+    }
 }
