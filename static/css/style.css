@@ -356,39 +356,66 @@ a {
     #hero {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
+        padding: 0;
     }
 
     .tagline {
-        margin-top: 70px;
+        padding: 5px 5%;
         text-align: left;
         margin-left: 5%;
     }
 
-    .services-monitor {
-        flex-direction: column;
-        gap: 20px;
-        padding-left: max(5%, 10px);
-        padding-right: max(5%, 10px);
-        width: 70%;
-        margin: 0 auto;
+    .tagline h1 {
+        padding: 0;
+    }
 
+    .services-monitor {
+        display: flex;
+        /* Ensure they stay in a row */
+        flex-direction: row;
+        /* Side-by-side layout */
+        justify-content: space-between;
+        /* Spread them out */
+        align-items: flex-start;
+        /* Align items at the top */
+        gap: 20px;
+        /* Maintain gap between the elements */
+        padding: 0 max(5%, 10px);
+        /* Add horizontal padding */
+        width: 100%;
+        /* Keep full width */
+        max-width: 1200px;
+        /* Limit the overall width */
+        margin: 0 auto;
+        /* Center the content */
+    }
+
+    .monitor-container {
+        flex: 2.5;
+        /* Give the monitor more space */
+        max-width: 800px;
+        /* Keep its width manageable */
+        width: 100%;
     }
 
     .services-overlay {
-        top: 5%;
+        padding: 0;
+        top: 4%;
         left: 7.5%;
         width: 85%;
+        /* Keep overlay responsive */
     }
 
+
     .services-overlay h3 {
-        margin-top: 10px;
-        margin-bottom: 10%;
+
+        margin-bottom: 5%;
         font-size: 1.5rem;
     }
 
     .service-item p {
         font-size: 1.0rem;
-        margin-top: 30%;
+        margin-top: 10%;
     }
 
     .service-item img {
@@ -397,16 +424,54 @@ a {
 
     /* CTA Box */
     .cta-box {
-        padding: 15px;
-        width: 100%;
-        margin-top: -15px;
-        margin-left: 0;
+        flex: 1.2;
+        /* Smaller width than monitor */
+        max-width: 650px;
+        /* Restrict max width */
+        margin-left: 5%;
+        /* Add spacing to the left */
+        margin-top: 0;
+        /* Reset vertical margin */
     }
 }
 
 @media (max-width: 721px) {
-    .services-overlay h3 {
-        font-size: 1.2rem;
+    .services-monitor {
+        display: flex;
+        flex-direction: column;
+        /* Stack monitor and CTA vertically */
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        /* Increase gap for better spacing */
+        padding: 0 5%;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .monitor-container {
+        flex: none;
+        width: 90%;
+        /* Full width for better fit */
+        max-width: 600px;
+        /* Reduce max-width to make the monitor smaller */
+    }
+
+    .cta-box {
+        flex: none;
+        width: 100%;
+        max-width: 550px;
+        /* Slightly reduce width for balance */
+        margin-top: 20px;
+        /* Increase gap below monitor */
+        margin-left: 0;
+    }
+
+    .services-overlay {
+        top: 5%;
+        left: 9%;
+        width: 80%;
+        /* Slightly narrower overlay */
     }
 
     .navbar ul {
@@ -423,11 +488,28 @@ a {
     }
 
     .tagline {
-        margin-top: 2%;
+        margin-top: 40px;
+        /* Add more space between the nav and the tagline */
+        padding: 0 5%;
+        /* Ensure consistent padding */
+    }
+
+    .tagline h1 {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        /* Slightly reduce font size for smaller screens */
+        margin-bottom: 10px;
+        /* Add a small gap below the tagline */
+    }
+
+    .tagline p {
+        font-size: 1.0rem;
+        margin-top: 0;
+        /* Adjust spacing for compact layout */
     }
 }
 
-@media (max-width: 650px) {
+
+@media (max-width: 672px) {
 
     /* Center the logo at the top */
     .logo img {
@@ -485,7 +567,7 @@ a {
 
 }
 
-@media (max-width: 560px) {
+@media (max-width: 577px) {
     .services-monitor {
         margin-top: -5px;
         width: 90%;
@@ -506,7 +588,7 @@ a {
     }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 474px) {
 
     /* Stack the nav links vertically */
     .navbar ul {
@@ -578,7 +660,7 @@ a {
 
 }
 
-@media (max-width: 435px) {
+@media (max-width: 450px) {
     .services-overlay {
         margin: 0;
     }
@@ -589,7 +671,7 @@ a {
     }
 }
 
-@media (max-width: 405px) {
+@media (max-width: 450px) {
     .tagline h1 {
         font-size: 1.0rem;
     }
@@ -605,7 +687,7 @@ a {
     }
 }
 
-@media (max-width: 365px) {
+@media (max-width: 405px) {
     .services-overlay {
         width: 80%;
         /* Reduce width for smaller screens */
@@ -648,7 +730,7 @@ a {
     }
 }
 
-@media (max-width: 344px) {
+@media (max-width: 382px) {
     .services-overlay {
         width: 85%;
         /* Maximize available space */
@@ -734,5 +816,12 @@ a {
 
     .tagline h1 {
         margin-top: 10px;
+    }
+
+    .monitor-container {
+        width: 100%;
+        /* Full width for better fit */
+
+        /* Reduce max-width to make the monitor smaller */
     }
 }
