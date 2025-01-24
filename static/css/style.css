@@ -481,6 +481,7 @@ a {
         margin-top: 20px;
         /* Increase gap below monitor */
         margin-left: 0;
+        margin-bottom: 10px;
     }
 
     .services-overlay {
