@@ -53,7 +53,7 @@ a {
     background-image: url('/static/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     /* Adjust grid rows for balance */
