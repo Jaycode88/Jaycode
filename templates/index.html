@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/static/css/contact.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <script src="/static/js/script.js" defer></script>
+    <script src="/static/js/modals.js" defer></script>
     <title>Jaycode</title>
 </head>
 <body>
@@ -395,11 +396,35 @@
     
             <!-- Right Side: Links -->
             <div class="footer-right">
-                <a href="#terms">Terms and Conditions</a>
-                <a href="#privacy">Privacy Policy</a>
+                <a href="#" class="modal-trigger" data-modal="termsModal">Terms and Conditions</a>
+                <a href="#" class="modal-trigger" data-modal="privacyModal">Privacy Policy</a>
             </div>
         </div>
     </footer>
-    
+
+    <!-- Terms and Conditions Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="termsModal">&times;</span>
+            <h2>Terms and Conditions</h2>
+            <p>
+                <!-- Add your Terms and Conditions content here -->
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec velit eget sem vehicula aliquet. Integer nec magna eu ligula suscipit commodo.
+            </p>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="privacyModal">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>
+                <!-- Add your Privacy Policy content here -->
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec velit eget sem vehicula aliquet. Integer nec magna eu ligula suscipit commodo.
+            </p>
+        </div>
+    </div>
+
 </body>
 </html>
