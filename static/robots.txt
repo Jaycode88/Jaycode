@@ -1,0 +1,13 @@
+# Allow all bots to access the main website
+User-agent: *
+Disallow: /private/
+Disallow: /sensitive-data/
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /static/private/
+Allow: /
+
+# Block specific bots (example: BadBot)
+User-agent: BadBot
+Disallow: /
+
