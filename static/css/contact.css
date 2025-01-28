@@ -101,18 +101,6 @@
     transform: scale(1.05);
 }
 
-.flash-success {
-    color: #4caf50;
-    font-size: 1rem;
-    margin: 10px 0;
-}
-
-.flash-error {
-    color: #f44336;
-    font-size: 1rem;
-    margin: 10px 0;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .contact-form {
