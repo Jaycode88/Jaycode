@@ -346,16 +346,6 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Contact Us</h2>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="flash-messages">
-                    {% for category, message in messages %}
-                        <p class="flash-{{ category }}">{{ message }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-
         <form method="POST" action="/" class="contact-form">
             <div class="form-group">
                 <label for="name">Full Name:</label>
@@ -432,5 +422,12 @@
         </div>
     </div>
 
+    <div id="flashMessageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="flashMessageTitle"></h2>
+            <p id="flashMessageText"></p>
+        </div>
+    </div>
 </body>
 </html>
