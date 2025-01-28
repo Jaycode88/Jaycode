@@ -329,6 +329,37 @@ footer a:hover {
 }
 
 
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    /* Distance from the bottom of the viewport */
+    right: 20px;
+    /* Distance from the right of the viewport */
+    z-index: 1000;
+    /* Ensure it's above other elements */
+    background-color: #0487D9;
+    /* Your preferred color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: none;
+    /* Hidden by default */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#backToTop:hover {
+    background-color: #005fa3;
+    /* Darker shade on hover */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+}
+
+
 /* Media Queries */
 @media (min-width: 1450px) {
     .services-grid {
@@ -523,6 +554,13 @@ footer a:hover {
         /* Add spacing to the left */
         margin-top: 0;
         /* Reset vertical margin */
+    }
+
+    #backToTop {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        font-size: 14px;
     }
 }
 
