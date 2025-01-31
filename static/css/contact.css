@@ -73,6 +73,15 @@
     margin: 10px 0;
 }
 
+.contact-form .agreement a {
+    color: black;
+    text-decoration: underline;
+}
+
+.contact-form .agreement a:hover {
+    color: #0487D9;
+}
+
 .contact-form .form-buttons {
     display: flex;
     justify-content: space-between;
