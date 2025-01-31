@@ -39,18 +39,16 @@ def authenticate_gmail_api():
     return build("gmail", "v1", credentials=creds)
 
 
-def send_email_gmail(name, email, message, newsletter):
+def send_email_gmail(name, email, message):
     try:
         service = authenticate_gmail_api()
         msg = EmailMessage()
         msg["Subject"] = f"New Contact Form Submission from {name}"
         msg["From"] = email
         msg["To"] = os.getenv("RECIPIENT_EMAIL")
-        newsletter_status = "Yes" if newsletter else "No"
         msg.set_content(
             f"Name: {name}\n"
             f"Email: {email}\n"
-            f"Newsletter Subscription: {newsletter_status}\n\n"
             f"Message:\n{message}"
         )
         raw_message = base64.urlsafe_b64encode(msg.as_bytes()).decode()
@@ -67,12 +65,11 @@ def index():
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
-        newsletter = request.form.get("newsletter") == "on"
 
         if not name or not email or not message:
             return jsonify({"status": "error", "message": "Please fill out all required fields."})
 
-        if send_email_gmail(name, email, message, newsletter):
+        if send_email_gmail(name, email, message):
             return jsonify({"status": "success", "message": "Your message has been sent successfully!"})
         else:
             return jsonify({"status": "error", "message": "Failed to send your message. Please try again later."})
