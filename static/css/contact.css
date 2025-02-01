@@ -117,6 +117,13 @@
     transform-origin: center;
 }
 
+/* Extra protection for Honeypot to remain unseen to users */
+#honeypot {
+    display: none !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
 
 /* Responsive Adjustments */
 
