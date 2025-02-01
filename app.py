@@ -7,6 +7,8 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 import pickle
+import requests
+
 
 # Load environment variables
 load_dotenv()
@@ -68,6 +70,15 @@ def index():
 
         if not name or not email or not message:
             return jsonify({"status": "error", "message": "Please fill out all required fields."})
+
+        # Verify reCAPTCHA response
+        recaptcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")  # Load secret key from .env
+        recaptcha_verify_url = "https://www.google.com/recaptcha/api/siteverify"
+        recaptcha_data = {"secret": recaptcha_secret, "response": recaptcha_response}
+        recaptcha_response = requests.post(recaptcha_verify_url, data=recaptcha_data).json()
+
+        if not recaptcha_response.get("success"):
+            return jsonify({"status": "error", "message": "reCAPTCHA verification failed. Please try again."})
 
         if send_email_gmail(name, email, message):
             return jsonify({"status": "success", "message": "Your message has been sent successfully!"})
