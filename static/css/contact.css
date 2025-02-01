@@ -113,33 +113,31 @@
 .recaptcha-container {
     display: flex;
     justify-content: center;
-    transform: scale(0.85);
-    /* Default scaling */
+    transform: scale(01.0);
     transform-origin: center;
 }
 
+
+/* Responsive Adjustments */
+
 @media (max-width: 425px) {
     .recaptcha-container {
-        transform: scale(0.75);
-        /* Scale down for smaller screens */
+        transform: scale(0.85);
     }
 }
 
 @media (max-width: 375px) {
     .recaptcha-container {
-        transform: scale(0.65);
-        /* Further shrink for very small screens */
+        transform: scale(0.75);
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 315px) {
     .recaptcha-container {
-        transform: scale(0.55);
-        /* Final smallest size */
+        transform: scale(0.65);
     }
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .contact-form {
         padding: 20px;
