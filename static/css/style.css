@@ -310,6 +310,23 @@ a {
     color: red;
 }
 
+/* Make links inside modals stand out */
+#privacyModal .modal-content a {
+    color: #007bff;
+    /* Bootstrap default blue */
+    text-decoration: underline;
+    /* Underline to indicate it's a link */
+    font-weight: bold;
+    /* Make it stand out */
+    transition: color 0.3s ease;
+}
+
+.modal-content a:hover {
+    color: #0056b3;
+    /* Darker blue on hover */
+}
+
+
 /* Footer Links */
 footer {
     text-align: center;
