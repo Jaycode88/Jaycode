@@ -67,9 +67,14 @@ def index():
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
+        honeypot = request.form.get("honeypot")
 
         if not name or not email or not message:
             return jsonify({"status": "error", "message": "Please fill out all required fields."})
+        
+        # Reject if the honeypot is filled (bot detected)
+        if honeypot:
+            return jsonify({"status": "error", "message": "Spam detected. Submission blocked."})
 
         # Verify reCAPTCHA response
         recaptcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")  # Load secret key from .env
