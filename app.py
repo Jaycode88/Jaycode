@@ -7,6 +7,7 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 import pickle
+import requests
 
 # Load environment variables
 load_dotenv()
@@ -18,6 +19,9 @@ app.secret_key = os.getenv("SECRET_KEY")
 SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
 CREDENTIALS_FILE = "credentials.json"
 TOKEN_FILE = "token.pickle"
+
+# reCAPTCHA Keys
+RECAPTCHA_SECRET_KEY = os.getenv("RECAPTURE_SECRET_KEY")
 
 
 def authenticate_gmail_api():
@@ -38,6 +42,19 @@ def authenticate_gmail_api():
 
     return build("gmail", "v1", credentials=creds)
 
+def verify_recaptcha(token):
+    """Verify Google reCAPTCHA v3 token."""
+    url = "https://www.google.com/recaptcha/api/siteverify"
+    payload = {
+        "secret": RECAPTCHA_SECRET_KEY,
+        "response": token
+    }
+    response = requests.post(url, data=payload)
+    result = response.json()
+
+    if result.get("success") and result.get("score", 0) >= 0.5:
+        return True  # Passed reCAPTCHA
+    return False  # Failed reCAPTCHA
 
 def send_email_gmail(name, email, message):
     try:
@@ -65,9 +82,15 @@ def index():
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
+        recaptcha_token = request.form.get("g-recaptcha-response")  # Get reCAPTCHA token
 
         if not name or not email or not message:
             return jsonify({"status": "error", "message": "Please fill out all required fields."})
+
+        # Verify reCAPTCHA before sending the email
+        if not verify_recaptcha(recaptcha_token):
+            return jsonify({"status": "error", "message": "reCAPTCHA verification failed. Please try again."})
+
 
         if send_email_gmail(name, email, message):
             return jsonify({"status": "success", "message": "Your message has been sent successfully!"})
