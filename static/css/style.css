@@ -315,9 +315,7 @@ a {
     color: #007bff;
     /* Bootstrap default blue */
     text-decoration: underline;
-    /* Underline to indicate it's a link */
     font-weight: bold;
-    /* Make it stand out */
     transition: color 0.3s ease;
 }
 
