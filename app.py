@@ -8,6 +8,7 @@ from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 import pickle
 import requests
+import json
 
 
 # Load environment variables
@@ -21,6 +22,8 @@ SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
 CREDENTIALS_FILE = "credentials.json"
 TOKEN_FILE = "token.pickle"
 
+# Google reCAPTCHA Secret Key (from .env)
+RECAPTCHA_SECRET_KEY = os.getenv("RECAPTCHA_SECRET_KEY")
 
 def authenticate_gmail_api():
     creds = None
@@ -39,6 +42,20 @@ def authenticate_gmail_api():
             pickle.dump(creds, token)
 
     return build("gmail", "v1", credentials=creds)
+
+
+def verify_recaptcha(recaptcha_response):
+    """ Verify reCAPTCHA response with Google """
+    print("🔍 Verifying reCAPTCHA...")
+    url = "https://www.google.com/recaptcha/api/siteverify"
+    data = {
+        "secret": RECAPTCHA_SECRET_KEY,
+        "response": recaptcha_response
+    }
+    response = requests.post(url, data=data)
+    result = response.json()
+
+    return result.get("success", False)
 
 
 def send_email_gmail(name, email, message):
@@ -64,30 +81,37 @@ def send_email_gmail(name, email, message):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        print("\n🔹 [DEBUG] New POST request received!")  # Confirming a POST request
+
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
         honeypot = request.form.get("honeypot")
+        recaptcha_response = request.form.get("g-recaptcha-response")
+
+        print(f"📩 Received Form Data - Name: {name}, Email: {email}, Message: {message[:30]}...")
+        print(f"🕵️‍♂️ Honeypot Field: {request.form.get('honeypot')}") 
 
         if not name or not email or not message:
             return jsonify({"status": "error", "message": "Please fill out all required fields."})
-        
+
         # Reject if the honeypot is filled (bot detected)
         if honeypot:
+            print("🚨 [BOT DETECTED] Honeypot field was filled! Blocking submission.")
             return jsonify({"status": "error", "message": "Spam detected. Submission blocked."})
-
-        # Verify reCAPTCHA response
-        recaptcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")  # Load secret key from .env
-        recaptcha_verify_url = "https://www.google.com/recaptcha/api/siteverify"
-        recaptcha_data = {"secret": recaptcha_secret, "response": recaptcha_response}
-        recaptcha_response = requests.post(recaptcha_verify_url, data=recaptcha_data).json()
-
-        if not recaptcha_response.get("success"):
+        
+        # Validate reCAPTCHA
+        if not recaptcha_response or not verify_recaptcha(recaptcha_response):
+            print("❌ reCAPTCHA verification failed!")
             return jsonify({"status": "error", "message": "reCAPTCHA verification failed. Please try again."})
+        print("✅ reCAPTCHA verified successfully!")
+        
 
         if send_email_gmail(name, email, message):
+            print("📨 Email sent successfully!")
             return jsonify({"status": "success", "message": "Your message has been sent successfully!"})
         else:
+            print("❌ Failed to send email!")
             return jsonify({"status": "error", "message": "Failed to send your message. Please try again later."})
 
     return render_template("index.html")
