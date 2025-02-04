@@ -43,7 +43,7 @@ let isSwiping = false;
 track.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     isSwiping = true;
-});
+}, { passive: true });
 
 track.addEventListener('touchmove', (e) => {
     if (!isSwiping) return;
@@ -56,7 +56,7 @@ track.addEventListener('touchmove', (e) => {
         nextSlide(); // Swipe left
         isSwiping = false;
     }
-});
+}, { passive: true });
 
 track.addEventListener('touchend', () => {
     isSwiping = false;
