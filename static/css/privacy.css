@@ -44,6 +44,19 @@
     margin-bottom: 5px;
 }
 
+.link {
+    color: #007bff;
+    /* Bootstrap default blue */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #0056b3;
+    /* Darker blue on hover */
+}
+
 .back-button {
     background-color: black;
     color: white;
@@ -51,6 +64,7 @@
     border: none;
     border-radius: 5px;
     font-size: 1.1rem;
+    margin-top: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
