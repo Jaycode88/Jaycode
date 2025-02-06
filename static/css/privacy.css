@@ -1,0 +1,151 @@
+/* Background Image */
+#privacy-policy {
+    background-image: url('/static/images/double-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+/* Privacy Policy Content */
+.privacy-content {
+    margin-top: 25px;
+    position: relative;
+    background: white;
+    padding: 40px;
+    max-width: 80%;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.privacy-content p,
+.privacy-content ul,
+.privacy-content li,
+.privacy-content h3 {
+    line-height: 1.6;
+    /* Adjust spacing for better readability */
+    margin-bottom: 15px;
+    /* Add space between paragraphs and elements */
+}
+
+.privacy-content h1 {
+    font-size: 2rem;
+
+}
+
+.privacy-content h2 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.link {
+    color: #007bff;
+    /* Bootstrap default blue */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #0056b3;
+    /* Darker blue on hover */
+}
+
+.back-button {
+    background-color: black;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #444;
+}
+
+/* Responsive Fix for Small Screens */
+@media (max-width: 672px) {
+    #privacy-policy {
+        padding: 20px;
+        display: block;
+        /* Prevents flexbox from causing alignment issues */
+    }
+
+    .privacy-content {
+        max-width: 95%;
+        /* Allow more space for smaller screens */
+        padding: 20px;
+        /* Reduce padding for better fit */
+        margin: 20px auto;
+        /* Center it properly */
+    }
+
+    .privacy-content h1 {
+        font-size: 1.8rem;
+        /* Adjust heading size */
+        text-align: center;
+    }
+
+    .privacy-content h3 {
+        font-size: 1.2rem;
+        /* Reduce heading size for better spacing */
+    }
+
+    .privacy-content p,
+    .privacy-content ul,
+    .privacy-content li {
+        font-size: 1rem;
+        /* Make text more readable */
+        line-height: 1.5;
+    }
+
+    .back-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 672px) and (min-width: 475px) {
+    .logo img {
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+        /* Add extra space above the logo */
+        width: 150px;
+        /* Adjust size if needed */
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        /* Increase spacing below the logo */
+    }
+
+    .navbar ul {
+        flex-direction: row;
+        /* Ensure navbar items remain in a row */
+        gap: 15px;
+        /* Increase spacing between menu items */
+        padding: 10px 0;
+    }
+
+    .navbar ul li a {
+        padding: 8px 15px;
+        /* Adjust button size */
+        font-size: 1rem;
+    }
+}
