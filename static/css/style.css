@@ -311,7 +311,7 @@ a {
 }
 
 /* Make links inside modals stand out */
-#privacyModal .modal-content a {
+.modal-content a {
     color: #007bff;
     /* Bootstrap default blue */
     text-decoration: underline;
