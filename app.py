@@ -125,6 +125,10 @@ def privacy():
 def terms():
     return render_template("terms.html")
 
+@app.route("/oauth2callback")
+def oauth2callback():
+    return "OAuth2 callback successful!", 200
+
 
 if __name__ == "__main__":
     app.run(debug=True)
