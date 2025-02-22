@@ -60,3 +60,10 @@ document.querySelector(".reset-button").addEventListener("click", function () {
         grecaptcha.reset(); // Reset reCAPTCHA
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const closeButton = document.querySelector("#flashMessageModal .close");
+    if (closeButton) {
+        closeButton.addEventListener("click", closeModal);
+    }
+});
