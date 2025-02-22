@@ -7,13 +7,7 @@ document.querySelectorAll('.modal-trigger').forEach(trigger => {
     });
 });
 
-// Close Modal
-document.querySelectorAll('.close').forEach(closeButton => {
-    closeButton.addEventListener('click', function () {
-        const modalId = this.getAttribute('data-modal'); // Get modal ID
-        document.getElementById(modalId).style.display = 'none'; // Hide modal
-    });
-});
+
 
 // Close Modal on Background Click
 window.addEventListener('click', function (e) {
