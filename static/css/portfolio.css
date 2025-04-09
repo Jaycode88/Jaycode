@@ -10,16 +10,28 @@
     font-family: "Raleway", sans-serif;
     font-size: 2.5rem;
     text-transform: uppercase;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     letter-spacing: 2px;
     color: #000;
+}
+
+.section-intro {
+    font-family: "Roboto", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    margin-bottom: 40px;
+    color: #333;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 /* Portfolio Container */
 .portfolio-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 40px;
     margin: 0 auto;
     max-width: 1200px;
 }
@@ -35,6 +47,7 @@
 /* Portfolio Image and Overlays */
 .portfolio-image {
     position: relative;
+    width: 100%;
     max-width: 100%;
     border-radius: 10px;
     overflow: hidden;
@@ -53,85 +66,73 @@
     top: 0;
     width: 50%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     padding: 20px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     pointer-events: none;
-    /* Prevent interaction until visible */
-
 }
 
 .tech-overlay {
     left: 0;
     transform: translateX(-100%);
-    /* Initially hide off the left side */
 }
 
-/* Positioning the desc-overlay on the right */
 .desc-overlay {
     right: 0;
     transform: translateX(100%);
-    /* Initially hide off the right side */
 }
 
-/* Hover behavior: display the overlays */
-.portfolio-image:hover .tech-overlay {
-    opacity: 1;
-    transform: translateX(0);
-    /* Bring it into view */
-}
-
+.portfolio-image:hover .tech-overlay,
 .portfolio-image:hover .desc-overlay {
     opacity: 1;
     transform: translateX(0);
-    /* Bring it into view */
 }
 
 .tech-overlay h3,
-.desc-overlay p {
-    margin: 10px 0;
+.desc-overlay h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #04A9D9;
 }
 
-@media (max-width: 768px) {
-
-    .tech-overlay,
-    .desc-overlay {
-        width: 100%;
-        transform: translateY(100%);
-        /* Stack vertically below the image */
-        height: auto;
-    }
-
-    .tech-overlay {
-        top: 0;
-        left: 0;
-    }
-
-    .desc-overlay {
-        top: auto;
-        bottom: 0;
-        left: 0;
-    }
-
-    .portfolio-image:hover .tech-overlay,
-    .portfolio-image:hover .desc-overlay {
-        transform: translateY(0);
-        /* Bring into view on hover */
-    }
+/* Overlay Lists */
+.tech-stack,
+.project-features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 10px;
 }
 
-/* Testimonial */
+.tech-stack li::before,
+.project-features li::before,
+.project-results ul li::before {
+    content: "✓ ";
+    color: #04A9D9;
+    font-weight: bold;
+}
+
+/* Testimonial & Highlights */
+.testimonial-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
 .testimonial {
-    max-width: 800px;
     background-color: #0487D9;
-    color: #000;
+    color: #fff;
     padding: 20px;
     border-radius: 10px;
     font-style: italic;
@@ -141,7 +142,6 @@
 .testimonial blockquote {
     font-size: 1.2rem;
     margin: 0;
-    text-align: center;
 }
 
 .testimonial cite {
@@ -149,28 +149,202 @@
     margin-top: 10px;
     font-size: 1rem;
     font-weight: bold;
+}
+
+.project-results {
+    background: #f0f8ff;
+    border-left: 4px solid #0487D9;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: "Roboto", sans-serif;
+}
+
+.project-results h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #023859;
+}
+
+.project-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* Center the whole list */
+    display: inline-block; /* Keeps list centered but items aligned */
+    text-align: left; /* Aligns bullet points */
+}
+
+/* Coming Soon Box */
+.portfolio-coming-soon {
+    background-color: #f9f9f9;
+    border: 2px dashed #0487D9;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 40px;
     text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.portfolio-coming-soon h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #023859;
+}
+
+.portfolio-coming-soon p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #333;
 }
 
 /* CTA Section */
 .portfolio-cta {
     margin-top: 40px;
+    text-align: center;
 }
 
 .portfolio-cta h3 {
     font-size: 1.8rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: #023859;
 }
 
+.portfolio-cta p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* CTA Button */
+.cta-button {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #444;
+}
 
 /* Responsive Adjustments */
+@media (min-width: 768px) {
+    .testimonial-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .project-results,
+    .testimonial {
+        width: 45%;
+    }
+
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-overlay,
+    .desc-overlay {
+        font-size: 0.95rem;
+    }
+}
+
 @media (max-width: 768px) {
     .portfolio-container {
         grid-template-columns: 1fr;
     }
 
-    .testimonial {
-        padding: 15px;
+    .tech-overlay,
+    .desc-overlay {
+        width: 100%;
+        transform: translateY(100%);
+        height: auto;
+        align-items: center;
+        text-align: center;
+    }
+
+    .portfolio-image:hover .tech-overlay,
+    .portfolio-image:hover .desc-overlay {
+        transform: translateY(0);
+    }
+
+    .testimonial,
+    .project-results {
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    .tech-overlay,
+    .desc-overlay {
+        font-size: 0.8rem;
+        padding: 10px;
+        line-height: 1.4;
+    }
+
+    .tech-overlay h3,
+    .desc-overlay h3 {
         font-size: 1rem;
+    }
+
+    .tech-stack li,
+    .project-features li {
+        font-size: 0.85rem;
+    }
+}
+
+
+@media (max-width: 375px) {
+    .tech-overlay,
+    .desc-overlay {
+        font-size: 0.75rem;
+        padding: 8px;
+        line-height: 1.3;
+    }
+
+    .tech-overlay h3,
+    .desc-overlay h3 {
+        font-size: 0.95rem;
+    }
+
+    .tech-stack li,
+    .project-features li {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+}
+
+
+@media (max-width: 369px) {
+    .tech-overlay,
+    .desc-overlay {
+        font-size: 0.72rem;
+        padding: 6px 8px;
+        line-height: 1.2;
+    }
+
+    .tech-overlay h3,
+    .desc-overlay h3 {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+    }
+
+    .tech-stack li,
+    .project-features li {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+
+    .tech-stack,
+    .project-features {
+        margin-top: 5px;
     }
 }
