@@ -27,6 +27,34 @@
     transition: transform 0.5s ease-in-out;
 }
 
+/* Carousel Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    z-index: 10;
+    position: relative;
+    background: transparent;
+    height: auto;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+.indicator.active {
+    background-color: #0487D9;
+}
+
+
 .card {
     flex: 0 0 100%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -38,6 +66,11 @@
     /* Ensure content doesn't overflow */
     word-wrap: break-word;
     /* Prevent long words from overflowing */
+}
+
+.cta-text {
+    text-align: center !important;
+    font-weight: bold;
 }
 
 /* Titles */
@@ -115,8 +148,8 @@
     flex-direction: column;
     justify-content: center;
     /* Vertically center the content (excluding the title) */
-    align-items: flex-start;
-    /* Keep content left-aligned horizontally */
+    align-items: center;
+    /* CHANGED from flex-start to center */
     height: auto;
     min-height: 400px;
     /* Maintain consistent height with other cards */
@@ -200,9 +233,16 @@
     }
 
     .card p,
-    .card:nth-child(3) p {
+    .card:first-child p,
+    .card:nth-child(3) p,
+    .card:nth-child(4) p {
         font-size: 0.9rem;
-        /* Reduce text size slightly */
+        /* Ensure all card paragraphs scale consistently */
+    }
+
+    .card:nth-child(2) .mission {
+        font-size: 1.1rem;
+        /* Slightly reduced mission statement */
     }
 }
 
@@ -213,9 +253,17 @@
         min-height: auto;
     }
 
-    .card p {
+    .card p,
+    .card:first-child p,
+    .card:nth-child(3) p,
+    .card:nth-child(4) p {
         font-size: 0.85rem;
-        /* Smaller font for compact view */
+        line-height: 1.4;
+        /* Match line height and font size across all cards */
+    }
+
+    .card:nth-child(2) .mission {
+        font-size: 1rem;
         line-height: 1.4;
     }
 }
@@ -232,32 +280,17 @@
         max-width: 90%;
         /* Allow more text width */
     }
-}
 
-@media (max-width: 335px) {
     .card:nth-child(4) {
         padding: 15px;
         /* Adjust padding for smaller screens */
     }
-}
 
-/* Carousel Indicators */
-.carousel-indicators {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    margin: 0 5px;
-    background-color: #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.indicator.active {
-    background-color: #0487D9;
+    .card p,
+    .card:first-child p,
+    .card:nth-child(3) p,
+    .card:nth-child(4) p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
 }
