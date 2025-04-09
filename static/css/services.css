@@ -67,6 +67,52 @@
     font-size: 1rem;
     line-height: 1.6;
     text-align: left;
+    margin-bottom: 10px;
+}
+
+/* CTA Button on Cards */
+.service-cta {
+    background-color: #0487D9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.service-cta:hover {
+    background-color: #026bb3;
+}
+
+/* Feature List */
+.service-features {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.service-features li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 8px;
+}
+
+.service-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #0487D9;
+    font-weight: bold;
 }
 
 /* CTA Section */
@@ -80,6 +126,14 @@
     font-size: 1.8rem;
     color: #fff;
     margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-family: "Roboto", sans-serif;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 .cta-button {
