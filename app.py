@@ -58,7 +58,7 @@ def verify_recaptcha(recaptcha_response):
     return result.get("success", False)
 
 
-def send_email_gmail(name, email, message):
+def send_email_gmail(name, email, project_type, message):
     try:
         service = authenticate_gmail_api()
         msg = EmailMessage()
@@ -68,6 +68,7 @@ def send_email_gmail(name, email, message):
         msg.set_content(
             f"Name: {name}\n"
             f"Email: {email}\n"
+            f"Project Type: {project_type}\n\n"
             f"Message:\n{message}"
         )
         raw_message = base64.urlsafe_b64encode(msg.as_bytes()).decode()
@@ -85,6 +86,7 @@ def index():
 
         name = request.form.get("name")
         email = request.form.get("email")
+        project_type = request.form.get("project_type")
         message = request.form.get("message")
         honeypot = request.form.get("honeypot")
         recaptcha_response = request.form.get("g-recaptcha-response")
@@ -107,7 +109,7 @@ def index():
         print("✅ reCAPTCHA verified successfully!")
         
 
-        if send_email_gmail(name, email, message):
+        if send_email_gmail(name, email, project_type, message):
             print("📨 Email sent successfully!")
             return jsonify({"status": "success", "message": "Your message has been sent successfully!"})
         else:
