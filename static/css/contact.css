@@ -18,6 +18,13 @@
     color: white;
 }
 
+.contact-intro {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
 /* Form Styling */
 .contact-form {
     background: #fff;
@@ -39,6 +46,23 @@
     font-family: "Raleway", sans-serif;
     font-size: 1rem;
     margin-bottom: 10px;
+}
+
+.contact-form select {
+    width: 100%;
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    border: 1px solid #023859;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form select:focus {
+    border-color: #0487D9;
 }
 
 .contact-form input,
