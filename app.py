@@ -131,6 +131,23 @@ def terms():
 def oauth2callback():
     return "OAuth2 callback successful!", 200
 
+@app.route("/free-review", methods=["GET", "POST"])
+def free_review():
+    if request.method == "POST":
+        # (handle form submission logic later)
+        pass
+
+    return render_template("free_review.html")
+
+@app.route("/free-review/terms")
+def free_review_terms():
+    return render_template("free-review-terms.html")
+
+@app.route("/free-review/privacy")
+def free_review_privacy():
+    return render_template("free-review-privacy.html")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
