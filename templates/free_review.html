@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Free Website Review | JayCode</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claim your free website review from a certified full-stack developer. Improve your site's SEO, performance, UX, and mobile-friendliness.">
+    <link rel="icon" type="image/x-icon" href="/static/images/faviconjaycode.png">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/contact.css">
+    <link rel="stylesheet" href="/static/css/free_review.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="fr-hero">
+    <h1>Get a Free Expert Website Review</h1>
+    <p class="fr-subheadline">
+        Uncover what's working — and what isn't — with a clear, professional analysis of your website's performance, accessibility, SEO, and more.
+    </p>
+</section>
+
+<!-- Value Proposition Section -->
+<section class="fr-value-prop">
+    <div class="fr-value-grid container">
+        <!-- Left Side: Text Content -->
+        <div class="fr-value-text">
+            <p class="raleway bold">
+                This comprehensive review helps small business owners understand how to improve their websites, backed by clear data and expert insight.
+            </p>
+
+            <h2 class="fr-subsection-title">What You’ll Get in Your Report:</h2>
+            <ul class="fr-value-list">
+                <li>Mobile & Desktop Performance Scores</li>
+                <li>Accessibility & User Experience Assessment</li>
+                <li>Security & Form Compliance Check</li>
+                <li>SEO Overview with Key Issues Highlighted</li>
+                <li>Prioritized Recommendations (High–Low)</li>
+                <li>Expert Summary + Optional Follow-Up</li>
+            </ul>
+
+            <p class="fr-note">
+                📄 Delivered as a clean, client-friendly PDF with screenshots and tailored suggestions — yours to keep.
+            </p>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class="fr-value-image">
+            <img src="/static/images/review-preview.png" alt="Website Review Sample PDF">
+        </div>
+    </div>
+</section>
+
+
+<!-- Form Section -->
+<section class="fr-form-section">
+    <h2 class="fr-subsection-title">Request Your Free Website Review</h2>
+    <form method="POST" action="/free-review" class="contact-form">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Enter your first name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Enter your last name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Business Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your business email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="website_url">Your Website URL:</label>
+            <input type="url" id="website_url" name="website_url" placeholder="https://example.com" required>
+        </div>
+
+        <!-- Checkbox agreement -->
+        <div class="form-group agreement">
+            <label class="checkbox-label">
+              <input type="checkbox" name="consent" required>
+              I agree to the 
+              <a href="/free-review/terms" target="_blank">Terms & Conditions</a> and 
+              <a href="/free-review/privacy" target="_blank">Privacy Policy</a> for this review.
+            </label>
+            <p class="fine-print">
+              By submitting this form, you agree to our Website Review Terms of Service and Privacy Policy.
+              Your data will be processed in accordance with UK data protection laws.
+            </p>
+          </div>
+          
+        
+        
+
+
+        <div class="form-buttons">
+            <button type="submit" class="send-button">Get My Free Review</button>
+            <button type="reset" class="reset-button">Clear Form</button>
+        </div>
+
+        <p class="fr-trust-message">📬 Your review will be delivered within 2 business days.</p>
+    </form>
+</section>
+
+<!-- Credibility Section -->
+<section class="fr-credibility">
+    <h2 class="fr-subsection-title">Why Trust JayCode?</h2>
+    <p>
+        I’m Joe Seabrook — a certified full-stack developer who’s helped small businesses and local service providers grow online through better websites. With real-world experience in both business and web tech, I understand what matters to your customers and what drives conversions.
+    </p>
+    <ul class="fr-credibility-list">
+        <li>Certified Full-Stack Developer</li>
+        <li>HTML & CSS Specialist</li>
+        <li>SEO-Focused Web Solutions</li>
+        <li>Accessible, Mobile-First Design</li>
+        <li>Built & Managed Sites for UK Service Providers</li>
+    </ul>
+</section>
+
+<!-- FOOTER -->
+<footer class="fr-footer">
+    <div class="container">
+        <p>Questions? Contact us at <a href="mailto:contact@jaycode.co.uk">contact@jaycode.co.uk</a></p>
+        <p class="fine-print">This service is provided by JayCode, operating under the laws of England and Wales. Your data is protected and secure.</p>
+    </div>
+</footer>
+
+</body>
+</html>

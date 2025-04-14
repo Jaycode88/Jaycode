@@ -1,0 +1,241 @@
+/* === Free Review Landing Page Styles === */
+
+/* Layout Containers */
+.fr-hero,
+.fr-value-prop,
+.fr-form-section,
+.fr-credibility,
+.fr-footer {
+    padding: 60px 20px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}
+
+.fr-hero {
+    background-image: url('/static/images/background-owned.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.fr-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.fr-subheadline {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Value Proposition Section: Responsive Grid */
+.fr-value-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.fr-value-text {
+    flex: 1 1 55%;
+    min-width: 300px;
+    text-align: left;
+}
+
+.fr-value-image {
+    flex: 1 1 40%;
+    min-width: 260px;
+    text-align: center;
+}
+
+.fr-value-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Value Prop List */
+.fr-value-prop .fr-value-list {
+    list-style: none;
+    margin-top: 30px;
+    padding-left: 0;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Roboto", sans-serif;
+}
+
+.fr-value-list li {
+    font-size: 1rem;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.fr-value-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #0487D9;
+    font-weight: bold;
+}
+
+/* Form Section */
+.fr-form-section {
+    background-color: #f9f9f9;
+}
+
+.fr-form-section .form-buttons {
+    margin-top: 20px;
+}
+
+.fr-trust-message {
+    font-size: 1rem;
+    color: #0487D9;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Checkbox Agreement */
+.checkbox-label {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.4;
+    text-align: left;
+    margin-top: 10px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-top: 2px;
+    transform: scale(1.1);
+    flex-shrink: 0;
+}
+
+.checkbox-label a {
+    color: #0487D9;
+    text-decoration: underline;
+}
+
+.agreement .fine-print {
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Credibility Section */
+.fr-credibility {
+    background-color: #eaf7ff;
+}
+
+.fr-credibility p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fr-credibility-list {
+    list-style: none;
+    margin: 20px auto 0;
+    padding-left: 0;
+    text-align: left;
+    max-width: 400px;
+    font-family: "Roboto", sans-serif;
+}
+
+.fr-credibility-list li {
+    font-size: 1rem;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.fr-credibility-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #0487D9;
+    font-weight: bold;
+}
+
+/* Footer */
+.fr-footer {
+    background-color: #f0f0f0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.fr-footer a {
+    color: #0487D9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.fr-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Section Titles */
+.fr-subsection-title {
+    font-size: 1.8rem;
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #023859;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .fr-hero h1 {
+        font-size: 2rem;
+    }
+
+    .fr-subheadline {
+        font-size: 1rem;
+    }
+
+    .fr-subsection-title {
+        font-size: 1.5rem;
+    }
+
+    .fr-value-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .fr-value-text {
+        text-align: center;
+    }
+
+    .fr-value-list {
+        text-align: left;
+    }
+
+    .fr-value-list li,
+    .fr-credibility-list li {
+        font-size: 0.95rem;
+    }
+
+    .checkbox-label {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
