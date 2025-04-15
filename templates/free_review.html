@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/static/css/contact.css">
     <link rel="stylesheet" href="/static/css/free_review.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="/static/js/free_review.js" defer></script>
+
 </head>
 <body>
 
@@ -56,7 +58,7 @@
 <!-- Form Section -->
 <section class="fr-form-section">
     <h2 class="fr-subsection-title">Request Your Free Website Review</h2>
-    <form method="POST" action="/free-review" class="contact-form">
+    <form method="POST" action="/free-review" class="contact-form review-form">
         <div class="form-group">
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" placeholder="Enter your first name" required>
@@ -74,7 +76,7 @@
 
         <div class="form-group">
             <label for="website_url">Your Website URL:</label>
-            <input type="url" id="website_url" name="website_url" placeholder="https://example.com" required>
+            <input type="text" name="website_url" placeholder="e.g. www.example.com" required>
         </div>
 
         <!-- Checkbox agreement -->
@@ -90,10 +92,17 @@
               Your data will be processed in accordance with UK data protection laws.
             </p>
           </div>
-          
-        
-        
+        <!-- Honeypot -->
+        <div style="display: none;">
+            <label for="honeypot">Leave this field empty</label>
+            <input type="text" id="honeypot" name="honeypot">
+        </div>
 
+        <!-- reCAPTCHA -->
+        <div class="recaptcha-container">
+            <div class="g-recaptcha" data-sitekey="6Lcr4ckqAAAAAMIthlCvwJEpAI-6SQewLLc5Jc8V"></div>
+        </div>
+        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
         <div class="form-buttons">
             <button type="submit" class="send-button">Get My Free Review</button>
@@ -126,6 +135,16 @@
         <p class="fine-print">This service is provided by JayCode, operating under the laws of England and Wales. Your data is protected and secure.</p>
     </div>
 </footer>
+
+<!-- Flash Message Modal -->
+<div id="flashMessageModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="flashMessageTitle"></h2>
+      <p id="flashMessageText"></p>
+    </div>
+  </div>
+  
 
 </body>
 </html>
