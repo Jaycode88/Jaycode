@@ -9,6 +9,9 @@ from google.auth.transport.requests import Request
 import pickle
 import requests
 import json
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+ 
 
 
 # Load environment variables
@@ -16,6 +19,11 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///reviews.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
 
 # Gmail API configuration
 SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
@@ -123,29 +131,90 @@ def index():
 def privacy():
     return render_template("privacy.html")
 
+
 @app.route("/terms")
 def terms():
     return render_template("terms.html")
+
 
 @app.route("/oauth2callback")
 def oauth2callback():
     return "OAuth2 callback successful!", 200
 
+
 @app.route("/free-review", methods=["GET", "POST"])
 def free_review():
     if request.method == "POST":
-        # (handle form submission logic later)
-        pass
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        email = request.form.get("email")
+        website_url = request.form.get("website_url")
+        # Normalize the website URL if it doesn't start with http:// or https://
+        if website_url and not website_url.startswith(("http://", "https://")):
+            website_url = "https://" + website_url
+
+        honeypot = request.form.get("honeypot")
+        recaptcha_response = request.form.get("g-recaptcha-response")
+
+        if honeypot:
+            print("🚫 Honeypot triggered! Possible spam.")
+            return jsonify({"status": "error", "message": "Spam detected. Submission blocked."})
+
+        if not recaptcha_response or not verify_recaptcha(recaptcha_response):
+            print("❌ reCAPTCHA failed.")
+            return jsonify({"status": "error", "message": "reCAPTCHA verification failed."})
+        
+        # Check for duplicates
+        existing = ReviewRequest.query.filter(
+            (ReviewRequest.email == email) | (ReviewRequest.website_url == website_url)
+        ).first()
+
+        if existing:
+            return jsonify({
+                "status": "error",
+                "message": "This email or website has already been submitted for review."
+            })
+
+        new_request = ReviewRequest(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            website_url=website_url
+        )
+        db.session.add(new_request)
+        db.session.commit()
+
+        send_email_gmail(
+            name=f"{first_name} {last_name}",
+            email=email,
+            project_type="Free Website Review",
+            message=f"New review request for: {website_url}"
+        )
+
+        return jsonify({"status": "success", "message": "Your review request has been submitted!"})
 
     return render_template("free_review.html")
+
 
 @app.route("/free-review/terms")
 def free_review_terms():
     return render_template("free-review-terms.html")
 
+
 @app.route("/free-review/privacy")
 def free_review_privacy():
     return render_template("free-review-privacy.html")
+
+class ReviewRequest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    email = db.Column(db.String(150))
+    website_url = db.Column(db.String(300))
+    status = db.Column(db.String(50), default='requested')  # requested, in_progress, completed
+    notes = db.Column(db.Text, nullable=True)
+    submitted_at = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 
 
