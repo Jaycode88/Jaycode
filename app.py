@@ -12,6 +12,10 @@ import requests
 import json
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
  
 
 
@@ -192,6 +196,8 @@ def free_review():
             message=f"New review request for: {website_url}"
         )
 
+        send_confirmation_email(email, first_name)
+
         return jsonify({"status": "success", "message": "Your review request has been submitted!"})
 
     return render_template("free_review.html")
@@ -274,6 +280,61 @@ def delete_review():
             flash(f"Review ID {delete_id} deleted.", "success")
 
     return redirect(url_for("admin_dashboard"))
+
+
+def send_confirmation_email(to_email, first_name):
+    subject = "Your Website Review Request Has Been Received"
+    sender_email = os.getenv("SMTP_USERNAME")  # contact@jaycode.co.uk
+    smtp_server = os.getenv("SMTP_SERVER")
+    smtp_port = int(os.getenv("SMTP_PORT"))
+    smtp_username = os.getenv("SMTP_USERNAME")
+    smtp_password = os.getenv("SMTP_PASSWORD")
+
+    # Email body (HTML + plain text fallback)
+    text = f"""
+Hi {first_name},
+
+Thank you for requesting a free website review from JayCode!
+
+We've received your request and will get back to you within 2 business days with your detailed review.
+
+If you have any questions in the meantime, feel free to reach out to us at contact@jaycode.co.uk.
+
+Best regards,  
+Joe  
+JayCode.co.uk
+"""
+    html = f"""
+<html>
+  <body>
+    <p>Hi {first_name},</p>
+    <p>Thank you for requesting a <strong>free website review</strong> from <strong>JayCode</strong>!</p>
+    <p>We've received your request and will send your detailed report within <strong>2 business days</strong>.</p>
+    <p>If you have any questions, feel free to reply or contact us at <a href="mailto:contact@jaycode.co.uk">contact@jaycode.co.uk</a>.</p>
+    <p>Best regards,<br>Joe<br><strong>JayCode.co.uk</strong></p>
+  </body>
+</html>
+"""
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = sender_email
+    msg["To"] = to_email
+
+    # Attach plain and HTML content
+    msg.attach(MIMEText(text, "plain"))
+    msg.attach(MIMEText(html, "html"))
+
+    try:
+        with smtplib.SMTP(smtp_server, smtp_port) as server:
+            server.starttls()
+            server.login(smtp_username, smtp_password)
+            server.send_message(msg)
+        print(f"✅ Confirmation email sent to {to_email}")
+        return True
+    except Exception as e:
+        print(f"❌ Failed to send confirmation email: {e}")
+        return False
 
 
 class ReviewRequest(db.Model):
