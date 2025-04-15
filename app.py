@@ -4,7 +4,6 @@ import os
 from dotenv import load_dotenv
 import base64
 from email.message import EmailMessage
-from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 import pickle
@@ -16,9 +15,6 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
- 
-
-
 # Load environment variables
 load_dotenv()
 
@@ -29,21 +25,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-
 # Gmail API configuration
 SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
 CREDENTIALS_FILE = "credentials.json"
 TOKEN_FILE = "token.pickle"
-
-# Google reCAPTCHA Secret Key (from .env)
 RECAPTCHA_SECRET_KEY = os.getenv("RECAPTCHA_SECRET_KEY")
+
 
 def authenticate_gmail_api():
     creds = None
     if os.path.exists(TOKEN_FILE):
         with open(TOKEN_FILE, "rb") as token:
             creds = pickle.load(token)
-
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
@@ -53,13 +46,10 @@ def authenticate_gmail_api():
             creds = flow.run_local_server(port=0)
         with open(TOKEN_FILE, "wb") as token:
             pickle.dump(creds, token)
-
     return build("gmail", "v1", credentials=creds)
 
 
 def verify_recaptcha(recaptcha_response):
-    """ Verify reCAPTCHA response with Google """
-    print("🔍 Verifying reCAPTCHA...")
     url = "https://www.google.com/recaptcha/api/siteverify"
     data = {
         "secret": RECAPTCHA_SECRET_KEY,
@@ -67,7 +57,6 @@ def verify_recaptcha(recaptcha_response):
     }
     response = requests.post(url, data=data)
     result = response.json()
-
     return result.get("success", False)
 
 
@@ -95,8 +84,6 @@ def send_email_gmail(name, email, project_type, message):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        print("\n🔹 [DEBUG] New POST request received!")  # Confirming a POST request
-
         name = request.form.get("name")
         email = request.form.get("email")
         project_type = request.form.get("project_type")
@@ -104,47 +91,18 @@ def index():
         honeypot = request.form.get("honeypot")
         recaptcha_response = request.form.get("g-recaptcha-response")
 
-        print(f"📩 Received Form Data - Name: {name}, Email: {email}, Message: {message[:30]}...")
-        print(f"🕵️‍♂️ Honeypot Field: {request.form.get('honeypot')}") 
-
         if not name or not email or not message:
             return jsonify({"status": "error", "message": "Please fill out all required fields."})
-
-        # Reject if the honeypot is filled (bot detected)
         if honeypot:
-            print("🚨 [BOT DETECTED] Honeypot field was filled! Blocking submission.")
             return jsonify({"status": "error", "message": "Spam detected. Submission blocked."})
-        
-        # Validate reCAPTCHA
         if not recaptcha_response or not verify_recaptcha(recaptcha_response):
-            print("❌ reCAPTCHA verification failed!")
             return jsonify({"status": "error", "message": "reCAPTCHA verification failed. Please try again."})
-        print("✅ reCAPTCHA verified successfully!")
-        
 
         if send_email_gmail(name, email, project_type, message):
-            print("📨 Email sent successfully!")
             return jsonify({"status": "success", "message": "Your message has been sent successfully!"})
         else:
-            print("❌ Failed to send email!")
             return jsonify({"status": "error", "message": "Failed to send your message. Please try again later."})
-
     return render_template("index.html")
-
-
-@app.route("/privacy")
-def privacy():
-    return render_template("privacy.html")
-
-
-@app.route("/terms")
-def terms():
-    return render_template("terms.html")
-
-
-@app.route("/oauth2callback")
-def oauth2callback():
-    return "OAuth2 callback successful!", 200
 
 
 @app.route("/free-review", methods=["GET", "POST"])
@@ -154,26 +112,32 @@ def free_review():
         last_name = request.form.get("last_name")
         email = request.form.get("email")
         website_url = request.form.get("website_url")
-        # Normalize the website URL if it doesn't start with http:// or https://
+
+        # Get current reset point
+        counter = WeeklyCounter.query.first()
+        reset_time = counter.reset_time if counter else datetime.min
+
+        # Count reviews submitted since reset
+        weekly_count = ReviewRequest.query.filter(ReviewRequest.submitted_at >= reset_time).count()
+        if weekly_count >= 5:
+            return jsonify({
+                "status": "error",
+                "message": "The request queue is full for this week. Please try again next week or contact us directly."
+            })
+
         if website_url and not website_url.startswith(("http://", "https://")):
             website_url = "https://" + website_url
 
         honeypot = request.form.get("honeypot")
         recaptcha_response = request.form.get("g-recaptcha-response")
-
         if honeypot:
-            print("🚫 Honeypot triggered! Possible spam.")
             return jsonify({"status": "error", "message": "Spam detected. Submission blocked."})
-
         if not recaptcha_response or not verify_recaptcha(recaptcha_response):
-            print("❌ reCAPTCHA failed.")
             return jsonify({"status": "error", "message": "reCAPTCHA verification failed."})
-        
-        # Check for duplicates
+
         existing = ReviewRequest.query.filter(
             (ReviewRequest.email == email) | (ReviewRequest.website_url == website_url)
         ).first()
-
         if existing:
             return jsonify({
                 "status": "error",
@@ -195,44 +159,9 @@ def free_review():
             project_type="Free Website Review",
             message=f"New review request for: {website_url}"
         )
-
         send_confirmation_email(email, first_name)
-
         return jsonify({"status": "success", "message": "Your review request has been submitted!"})
-
     return render_template("free_review.html")
-
-
-@app.route("/free-review/terms")
-def free_review_terms():
-    return render_template("free-review-terms.html")
-
-
-@app.route("/free-review/privacy")
-def free_review_privacy():
-    return render_template("free-review-privacy.html")
-
-
-@app.route("/admin/login", methods=["GET", "POST"])
-def admin_login():
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-
-        user = AdminUser.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password_hash, password):
-            session["admin_logged_in"] = True
-            return redirect(url_for("admin_dashboard"))
-        else:
-            return render_template("admin_login.html", error="Invalid credentials.")
-
-    return render_template("admin_login.html")
-
-
-@app.route("/admin/logout")
-def admin_logout():
-    session.pop("admin_logged_in", None)
-    return redirect(url_for("admin_login"))
 
 
 @app.route("/admin/dashboard")
@@ -241,8 +170,48 @@ def admin_dashboard():
         flash("Please log in to access the admin dashboard.", "error")
         return redirect(url_for("admin_login"))
 
+    counter = WeeklyCounter.query.first()
+    reset_time = counter.reset_time if counter else datetime.min
+    weekly_count = ReviewRequest.query.filter(ReviewRequest.submitted_at >= reset_time).count()
     requests = ReviewRequest.query.order_by(ReviewRequest.submitted_at.desc()).all()
-    return render_template("admin_dashboard.html", requests=requests)
+    return render_template("admin_dashboard.html", requests=requests, weekly_count=weekly_count)
+
+
+@app.route("/admin/reset-weekly-limit", methods=["POST"])
+def reset_weekly_limit():
+    if not session.get("admin_logged_in"):
+        flash("Access denied.", "error")
+        return redirect(url_for("admin_login"))
+
+    counter = WeeklyCounter.query.first()
+    if not counter:
+        counter = WeeklyCounter(reset_time=datetime.utcnow())
+        db.session.add(counter)
+    else:
+        counter.reset_time = datetime.utcnow()
+    db.session.commit()
+    flash("Weekly review counter has been reset.", "success")
+    return redirect(url_for("admin_dashboard"))
+
+
+@app.route("/admin/login", methods=["GET", "POST"])
+def admin_login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        user = AdminUser.query.filter_by(username=username).first()
+        if user and check_password_hash(user.password_hash, password):
+            session["admin_logged_in"] = True
+            return redirect(url_for("admin_dashboard"))
+        else:
+            return render_template("admin_login.html", error="Invalid credentials.")
+    return render_template("admin_login.html")
+
+
+@app.route("/admin/logout")
+def admin_logout():
+    session.pop("admin_logged_in", None)
+    return redirect(url_for("admin_login"))
 
 
 @app.route("/admin/update", methods=["POST"])
@@ -284,34 +253,29 @@ def delete_review():
 
 def send_confirmation_email(to_email, first_name):
     subject = "Your Website Review Request Has Been Received"
-    sender_email = os.getenv("SMTP_USERNAME")  # contact@jaycode.co.uk
+    sender_email = os.getenv("SMTP_USERNAME")
     smtp_server = os.getenv("SMTP_SERVER")
     smtp_port = int(os.getenv("SMTP_PORT"))
     smtp_username = os.getenv("SMTP_USERNAME")
     smtp_password = os.getenv("SMTP_PASSWORD")
 
-    # Email body (HTML + plain text fallback)
     text = f"""
 Hi {first_name},
 
 Thank you for requesting a free website review from JayCode!
-
-We've received your request and will get back to you within 2 business days with your detailed review.
-
-If you have any questions in the meantime, feel free to reach out to us at contact@jaycode.co.uk.
+We'll send your report within 2 business days.
 
 Best regards,  
-Joe  
-JayCode.co.uk
+Joe – JayCode.co.uk
 """
+
     html = f"""
 <html>
   <body>
     <p>Hi {first_name},</p>
     <p>Thank you for requesting a <strong>free website review</strong> from <strong>JayCode</strong>!</p>
-    <p>We've received your request and will send your detailed report within <strong>2 business days</strong>.</p>
-    <p>If you have any questions, feel free to reply or contact us at <a href="mailto:contact@jaycode.co.uk">contact@jaycode.co.uk</a>.</p>
-    <p>Best regards,<br>Joe<br><strong>JayCode.co.uk</strong></p>
+    <p>We'll send your report within <strong>2 business days</strong>.</p>
+    <p>Best,<br>Joe<br><strong>JayCode.co.uk</strong></p>
   </body>
 </html>
 """
@@ -320,8 +284,6 @@ JayCode.co.uk
     msg["Subject"] = subject
     msg["From"] = sender_email
     msg["To"] = to_email
-
-    # Attach plain and HTML content
     msg.attach(MIMEText(text, "plain"))
     msg.attach(MIMEText(html, "html"))
 
@@ -331,10 +293,8 @@ JayCode.co.uk
             server.login(smtp_username, smtp_password)
             server.send_message(msg)
         print(f"✅ Confirmation email sent to {to_email}")
-        return True
     except Exception as e:
         print(f"❌ Failed to send confirmation email: {e}")
-        return False
 
 
 class ReviewRequest(db.Model):
@@ -343,7 +303,7 @@ class ReviewRequest(db.Model):
     last_name = db.Column(db.String(100))
     email = db.Column(db.String(150))
     website_url = db.Column(db.String(300))
-    status = db.Column(db.String(50), default='requested')  # requested, in_progress, completed
+    status = db.Column(db.String(50), default='requested')
     notes = db.Column(db.Text, nullable=True)
     submitted_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -360,5 +320,12 @@ class AdminUser(db.Model):
         return check_password_hash(self.password_hash, password)
 
 
+class WeeklyCounter(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    reset_time = db.Column(db.DateTime, default=datetime.utcnow)
+
+
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
