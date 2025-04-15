@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - JayCode</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+<body>
+    <header class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <a href="{{ url_for('admin_logout') }}" class="logout-link">Logout</a>
+    </header>
+
+    <main class="admin-content">
+        <h2>Website Review Requests</h2>
+
+        <form method="POST" action="{{ url_for('update_review') }}">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Submitted</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Website</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in requests %}
+                    <tr>
+                        <form method="POST" action="{{ url_for('update_review') }}">
+                            <td>{{ r.id }}<input type="hidden" name="save_id" value="{{ r.id }}"></td>
+                            <td>{{ r.submitted_at.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ r.first_name }} {{ r.last_name }}</td>
+                            <td>{{ r.email }}</td>
+                            <td><a href="{{ r.website_url }}" target="_blank">{{ r.website_url }}</a></td>
+                            <td>
+                                <select name="status_{{ r.id }}">
+                                    <option value="requested" {% if r.status == 'requested' %}selected{% endif %}>Requested</option>
+                                    <option value="in_progress" {% if r.status == 'in_progress' %}selected{% endif %}>In Progress</option>
+                                    <option value="completed" {% if r.status == 'completed' %}selected{% endif %}>Completed</option>
+                                </select>
+                            </td>
+                            <td>
+                                <textarea name="notes_{{ r.id }}" rows="2" cols="25">{{ r.notes or '' }}</textarea>
+                            </td>
+                            <td>
+                                <button type="submit">Save</button>
+                            </td>
+                        </form>
+                        <form method="POST" action="{{ url_for('delete_review') }}">
+                            <td colspan="8" style="text-align:right;">
+                                <input type="hidden" name="delete_id" value="{{ r.id }}">
+                                <button type="submit" class="delete-button" onclick="return confirm('Delete review ID {{ r.id }}?');">Delete</button>
+                            </td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>            
+        </form>
+        
+    </main>
+</body>
+</html>

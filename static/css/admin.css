@@ -1,0 +1,67 @@
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #023859;
+    color: white;
+    padding: 20px;
+}
+
+.logout-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+.admin-content {
+    padding: 30px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    color: black;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin-table th {
+    background: #f4f4f4;
+    font-weight: bold;
+    color: black;
+}
+
+.admin-table a {
+    color: #0487D9; /* or any visible blue you prefer */
+    text-decoration: underline;
+}
+
+.admin-table a:hover {
+    color: #023859;
+    text-decoration: none;
+}
+
+.delete-button {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 8px;
+    border-radius: 4px;
+}
+
+.delete-button:hover {
+    background: #d32f2f;
+}

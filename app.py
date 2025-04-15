@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
 import os
 from dotenv import load_dotenv
 import base64
@@ -205,6 +206,76 @@ def free_review_terms():
 def free_review_privacy():
     return render_template("free-review-privacy.html")
 
+
+@app.route("/admin/login", methods=["GET", "POST"])
+def admin_login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        user = AdminUser.query.filter_by(username=username).first()
+        if user and check_password_hash(user.password_hash, password):
+            session["admin_logged_in"] = True
+            return redirect(url_for("admin_dashboard"))
+        else:
+            return render_template("admin_login.html", error="Invalid credentials.")
+
+    return render_template("admin_login.html")
+
+
+@app.route("/admin/logout")
+def admin_logout():
+    session.pop("admin_logged_in", None)
+    return redirect(url_for("admin_login"))
+
+
+@app.route("/admin/dashboard")
+def admin_dashboard():
+    if not session.get("admin_logged_in"):
+        flash("Please log in to access the admin dashboard.", "error")
+        return redirect(url_for("admin_login"))
+
+    requests = ReviewRequest.query.order_by(ReviewRequest.submitted_at.desc()).all()
+    return render_template("admin_dashboard.html", requests=requests)
+
+
+@app.route("/admin/update", methods=["POST"])
+def update_review():
+    if not session.get("admin_logged_in"):
+        flash("Access denied.", "error")
+        return redirect(url_for("admin_login"))
+
+    save_id = request.form.get("save_id")
+    if save_id:
+        request_to_update = ReviewRequest.query.get(int(save_id))
+        if request_to_update:
+            new_status = request.form.get(f"status_{save_id}")
+            new_notes = request.form.get(f"notes_{save_id}")
+            request_to_update.status = new_status
+            request_to_update.notes = new_notes
+            db.session.commit()
+            flash(f"Review ID {save_id} updated.", "success")
+
+    return redirect(url_for("admin_dashboard"))
+
+
+@app.route("/admin/delete", methods=["POST"])
+def delete_review():
+    if not session.get("admin_logged_in"):
+        flash("Access denied.", "error")
+        return redirect(url_for("admin_login"))
+
+    delete_id = request.form.get("delete_id")
+    if delete_id:
+        review = ReviewRequest.query.get(int(delete_id))
+        if review:
+            db.session.delete(review)
+            db.session.commit()
+            flash(f"Review ID {delete_id} deleted.", "success")
+
+    return redirect(url_for("admin_dashboard"))
+
+
 class ReviewRequest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100))
@@ -216,6 +287,16 @@ class ReviewRequest(db.Model):
     submitted_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
+class AdminUser(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), unique=True, nullable=False)
+    password_hash = db.Column(db.String(200), nullable=False)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 
 if __name__ == "__main__":
