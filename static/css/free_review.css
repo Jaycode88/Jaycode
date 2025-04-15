@@ -1,10 +1,9 @@
-/* === Free Review Landing Page Styles === */
-
 /* Layout Containers */
 .fr-hero,
 .fr-value-prop,
 .fr-form-section,
 .fr-credibility,
+.fr-faq,
 .fr-footer {
     padding: 60px 20px;
     background-color: #fff;
@@ -24,11 +23,31 @@
     margin-bottom: 20px;
 }
 
+.fr-price-value {
+    background-color: rgba(0, 0, 0, 0.6); /* dark transparent background */
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
 .fr-subheadline {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto;
     font-family: "Roboto", sans-serif;
+}
+
+.fr-trust-indicator {
+    background-color: #ffebeb;
+    color: #d63031;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 20px 0;
+    font-weight: 500;
 }
 
 /* Value Proposition Section: Responsive Grid */
@@ -62,7 +81,6 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Value Prop List */
 .fr-value-prop .fr-value-list {
     list-style: none;
     margin-top: 30px;
@@ -75,9 +93,10 @@
 }
 
 .fr-value-list li {
-    font-size: 1rem;
-    padding-left: 25px;
-    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
     position: relative;
 }
 
@@ -89,13 +108,54 @@
     font-weight: bold;
 }
 
+.fr-value-list li div {
+    padding-left: 25px;
+}
+
+.fr-value-list li strong {
+    display: block;
+    color: #023859;
+    margin-bottom: 5px;
+}
+
+.fr-value-list li p {
+    color: #666;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.fr-note {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #333;
+}
+
 /* Form Section */
 .fr-form-section {
-    background-color: #f9f9f9;
+    background-image: url('/static/images/background-owned.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.fr-form-section h2 {
+    color: white;
+    text-decoration: underline;
 }
 
 .fr-form-section .form-buttons {
     margin-top: 20px;
+}
+
+.fr-urgency-notice {
+    background-color: #e8f5ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    color: #023859;
 }
 
 .fr-trust-message {
@@ -134,7 +194,7 @@
 .agreement .fine-print {
     font-size: 0.8rem;
     margin-top: 10px;
-    color: #666;
+    color: #ccc;
 }
 
 /* Credibility Section */
@@ -161,17 +221,51 @@
 
 .fr-credibility-list li {
     font-size: 1rem;
-    padding-left: 20px;
+    padding-left: 25px;
     margin-bottom: 10px;
     position: relative;
 }
 
 .fr-credibility-list li::before {
-    content: "•";
+    content: "✓";
     position: absolute;
     left: 0;
     color: #0487D9;
     font-weight: bold;
+}
+
+/* FAQ Section */
+.fr-faq {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.faq-item {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.faq-item h3 {
+    color: #023859;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.faq-item p {
+    color: #666;
+    margin: 0;
+    font-size: 1rem;
 }
 
 /* Footer */
@@ -237,5 +331,18 @@
         flex-direction: row;
         align-items: flex-start;
         text-align: left;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fr-urgency-notice {
+        margin: 20px;
+    }
+
+    .fr-credentials {
+        margin: 20px;
+        padding: 15px;
     }
 }
