@@ -131,6 +131,9 @@
     color: #333;
 }
 
+.pdf-link {
+    color: #023859;
+}
 /* Form Section */
 .fr-form-section {
     background-image: url('/static/images/background-owned.png');
