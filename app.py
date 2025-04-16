@@ -164,6 +164,14 @@ def free_review():
     return render_template("free_review.html")
 
 
+@app.route("/free-review/terms")
+def free_review_terms():
+    return render_template("free-review-terms.html")
+
+@app.route("/free-review/privacy")
+def free_review_privacy():
+    return render_template("free-review-privacy.html")
+
 @app.route("/admin/dashboard")
 def admin_dashboard():
     if not session.get("admin_logged_in"):
