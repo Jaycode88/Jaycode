@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - JayCode</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <header class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <a href="{{ url_for('admin_logout') }}" class="logout-link">Logout</a>
+    </header>
+
+    <main class="admin-content">
+        <h2>Website Review Requests</h2>
+
+        <!-- Weekly Counter and Reset -->
+        <div class="weekly-limit">
+            <p><strong>Reviews This Week:</strong> {{ weekly_count }} / 5</p>
+            <form method="POST" action="{{ url_for('reset_weekly_limit') }}">
+                <button type="submit" class="reset-limit-btn">Reset Weekly Limit</button>
+            </form>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Submitted</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in requests %}
+                <tr>
+                    <td>{{ r.id }}</td>
+                    <td>{{ r.submitted_at.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ r.first_name }} {{ r.last_name }}</td>
+                    <td>{{ r.email }}</td>
+                    <td><a href="{{ r.website_url }}" target="_blank">{{ r.website_url }}</a></td>
+                    <td>
+                        <form method="POST" action="{{ url_for('update_review') }}">
+                            <input type="hidden" name="save_id" value="{{ r.id }}">
+                            <select name="status_{{ r.id }}">
+                                <option value="requested" {% if r.status == 'requested' %}selected{% endif %}>Requested</option>
+                                <option value="in_progress" {% if r.status == 'in_progress' %}selected{% endif %}>In Progress</option>
+                                <option value="completed" {% if r.status == 'completed' %}selected{% endif %}>Completed</option>
+                            </select>
+                    </td>
+                    <td>
+                            <textarea name="notes_{{ r.id }}" rows="2" cols="25">{{ r.notes or '' }}</textarea>
+                    </td>
+                    <td>
+                            <button type="submit">Save</button>
+                        </form>
+                        <form method="POST" action="{{ url_for('delete_review') }}" onsubmit="return confirm('Delete review ID {{ r.id }}?');" style="margin-top: 5px;">
+                            <input type="hidden" name="delete_id" value="{{ r.id }}">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
