@@ -197,7 +197,7 @@
 .agreement .fine-print {
     font-size: 0.8rem;
     margin-top: 10px;
-    color: #ccc;
+    color: black;
 }
 
 /* Credibility Section */
@@ -296,6 +296,50 @@
     margin-bottom: 20px;
     color: #023859;
 }
+
+.trust-badges {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+}
+
+.badge-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.trust-badge {
+    height: 100px;
+    width: auto;
+}
+
+.gdpr-notice {
+    background: #f8f9fa;
+    border-left: 4px solid #4CAF50;
+    padding: 15px;
+    margin: 40px 0 0;
+    border-radius: 4px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gdpr-text {
+    font-size: 0.9em;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.gdpr-text a {
+    color: #2196F3;
+    text-decoration: underline;
+}
+
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
