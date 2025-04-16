@@ -23,3 +23,4 @@ token.json
 # Database files
 instance/reviews.db
 *.db
+
