@@ -89,6 +89,22 @@
     background-color: #026bb3;
 }
 
+.value-tag {
+    font-size: 0.8em;
+    color: #0487D9;
+    font-weight: normal;
+}
+
+.service-trust {
+    margin: 15px 0;
+}
+
+.limited-offer {
+    font-size: 0.9em;
+    color: #d63031;
+    font-weight: 500;
+}
+
 /* Feature List */
 .service-features {
     list-style: none;
@@ -159,3 +175,18 @@
         gap: 20px;
     }
 }
+
+@media (min-width: 1101px) {
+    .services-container.five-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        justify-content: center;
+    }
+}
+
+
+
+
+
+

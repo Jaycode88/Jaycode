@@ -1,0 +1,142 @@
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #023859;
+    color: white;
+    padding: 20px;
+}
+
+.logout-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+.admin-content {
+    padding: 30px;
+}
+
+.admin-content h2 {
+    color: #023859;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    color: black;
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.admin-table th {
+    background: #f4f4f4;
+    font-weight: bold;
+    color: black;
+}
+
+.admin-table a {
+    color: #0487D9;
+    text-decoration: underline;
+}
+
+.admin-table a:hover {
+    color: #023859;
+    text-decoration: none;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+}
+
+select {
+    width: 100%;
+    padding: 4px;
+    font-size: 0.9rem;
+}
+
+button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+}
+
+button[type="submit"] {
+    background-color: #0487D9;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #026bb3;
+}
+
+.delete-button {
+    background: #f44336;
+    color: white;
+}
+
+.delete-button:hover {
+    background: #d32f2f;
+}
+
+/* Weekly Limit Display & Reset Button */
+.weekly-limit {
+    background-color: #eef6ff;
+    color: #023859;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border: 1px solid #ccddee;
+    border-radius: 8px;
+    font-family: "Raleway", sans-serif;
+    margin-bottom: 20px;
+}
+
+.reset-limit-btn {
+    background-color: #023859;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reset-limit-btn:hover {
+    background-color: #035;
+}
+
+/* Flash messages (if you're using them) */
+.flash-message {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

@@ -19,3 +19,8 @@ credentials.json
 # pickle token
 token.pickle
 token.json
+
+# Database files
+instance/reviews.db
+*.db
+
