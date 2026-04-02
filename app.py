@@ -334,46 +334,8 @@ class WeeklyCounter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     reset_time = db.Column(db.DateTime, default=datetime.utcnow)
 
-@app.route("/trades-websites", methods=["GET", "POST"])
+@app.route("/trades-websites")
 def trades_websites():
-    if request.method == "POST":
-        name = request.form.get("name")
-        business_name = request.form.get("business_name")
-        email = request.form.get("email")
-        phone = request.form.get("phone")
-        project_type = request.form.get("project_type")
-        message = request.form.get("message")
-        honeypot = request.form.get("honeypot")
-        recaptcha_response = request.form.get("g-recaptcha-response")
-
-        if not name or not email or not phone or not message:
-            return jsonify({"status": "error", "message": "Please fill out all required fields."})
-
-        if honeypot:
-            return jsonify({"status": "error", "message": "Spam detected. Submission blocked."})
-
-        if not recaptcha_response or not verify_recaptcha(recaptcha_response):
-            return jsonify({"status": "error", "message": "reCAPTCHA verification failed. Please try again."})
-
-        full_message = (
-            f"Name: {name}\n"
-            f"Business Name: {business_name or 'Not provided'}\n"
-            f"Email: {email}\n"
-            f"Phone: {phone}\n"
-            f"Package Interest: {project_type}\n\n"
-            f"Message:\n{message}"
-        )
-
-        if send_email_gmail(
-            name=name,
-            email=email,
-            project_type=project_type,
-            message=full_message
-        ):
-            return jsonify({"status": "success", "message": "Your trades website enquiry has been sent successfully!"})
-        else:
-            return jsonify({"status": "error", "message": "Failed to send your message. Please try again later."})
-
     return render_template("trades_websites.html")
 
 if __name__ == "__main__":

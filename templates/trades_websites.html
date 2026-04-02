@@ -54,12 +54,8 @@
             ]
         }
     </script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="/static/js/contact.js?v=2" defer></script>
-    <script src="/static/js/modals.js" defer></script>
 
     <link rel="stylesheet" href="/static/css/style.css?v=2.3">
-    <link rel="stylesheet" href="/static/css/contact.css?v=2.3">
     <link rel="stylesheet" href="/static/css/footer.css?v=2.3">
     <link rel="stylesheet" href="/static/css/trades-websites.css?v=1.0">
 </head>
@@ -359,71 +355,41 @@
                         Tell us a bit about your business and we’ll help you choose the right package for your needs.
                     </p>
 
-                    <form method="POST" action="/trades-websites" class="contact-form trades-contact-form">
-                        <div class="form-group">
-                            <label for="name">Your Name:</label>
-                            <input type="text" id="name" name="name" placeholder="How should we address you?" required>
-                        </div>
+                    <form class="w2p-form"
+                        data-web2phone="form"
+                        data-public-key="_bECX5-DgiPqXUFilHUgKfeG"
+                        data-endpoint="https://web2phone.co.uk/api/v1/submit/">
 
                         <div class="form-group">
-                            <label for="business_name">Business Name:</label>
-                            <input type="text" id="business_name" name="business_name" placeholder="What is your business called?">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Your Email:</label>
-                            <input type="email" id="email" name="email" placeholder="Where should we reply?" required>
+                            <label for="your_name">Your Name:</label>
+                            <input id="your_name" name="your_name" type="text" placeholder="Jane Doe" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="phone">Phone Number:</label>
-                            <input type="tel" id="phone" name="phone" placeholder="What number should we call or WhatsApp?" inputmode="tel" required>
+                            <label for="email">Business Name:</label>
+                            <input id="email" name="email" type="text" placeholder="What is your business called?">
                         </div>
 
                         <div class="form-group">
-                            <label for="project_type">Package Interested In:</label>
-                            <select id="project_type" name="project_type" required>
-                                <option value="">Select a package</option>
-                                <option value="Trades Website - Starter">Starter</option>
-                                <option value="Trades Website - Pro">Pro</option>
-                                <option value="Trades Website - Not Sure Yet">Not Sure Yet</option>
-                            </select>
+                            <label for="phone">Your Email:</label>
+                            <input id="phone" name="phone" type="email" placeholder="you@example.com" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Tell Us About Your Business:</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                placeholder="What trade are you in? What services do you offer? Do you already have a website? Anything else we should know?"
-                                rows="6"
-                                required></textarea>
+                            <label for="message">Phone Number:</label>
+                            <input id="message" name="message" type="tel" placeholder="+14155552671" required>
                         </div>
 
-                        <div style="display: none;">
-                            <label for="honeypot">Leave this field empty</label>
-                            <input type="text" id="honeypot" name="honeypot">
+                        <div class="form-group">
+                            <label for="field">Tell Us About Your Business:</label>
+                            <input id="field" name="field" type="text" placeholder="What trade are you in? What services do you offer? Do you already have a website? Anything else we should know?">
                         </div>
 
-                        <div class="recaptcha-container">
-                            <div class="g-recaptcha" data-sitekey="6Lcr4ckqAAAAAMIthlCvwJEpAI-6SQewLLc5Jc8V"></div>
-                        </div>
-                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                        <button type="submit">Send</button>
 
-                        <div class="form-group agreement">
-                            <p>
-                                By sending this message, you agree to our
-                                <a href="/terms">Terms&nbsp;&&nbsp;Conditions</a>
-                                and
-                                <a href="/privacy">Privacy&nbsp;Policy</a>.
-                            </p>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="submit" class="send-button">Request My Website</button>
-                            <button type="reset" class="reset-button">Clear Form</button>
-                        </div>
+                        <p data-w2p-output class="w2p-output" aria-live="polite"></p>
                     </form>
+                    <script src="https://web2phone.co.uk/static/formsapp/js/embed.js?v=5"></script>
                 </div>
             </div>
         </section>
