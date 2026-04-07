@@ -58,6 +58,9 @@
     <link rel="stylesheet" href="/static/css/style.css?v=2.3">
     <link rel="stylesheet" href="/static/css/footer.css?v=2.3">
     <link rel="stylesheet" href="/static/css/trades-websites.css?v=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="/static/js/contact.js?v=2" defer></script>
+    <script src="/static/js/modals.js" defer></script>
 </head>
 <body>
     <header class="trades-header">
@@ -94,7 +97,7 @@
             </div>
 
             <div class="hero-summary-card">
-                <h2>What’s included</h2>
+                <h2>What's included</h2>
                 <ul>
                     <li>Hero section with clear call to action</li>
                     <li>About section to build trust</li>
@@ -352,20 +355,68 @@
                 <div class="trades-contact-wrap">
                     <h2 class="section-title">Request Your Trades Website</h2>
                     <p class="section-intro">
-                        Tell us a bit about your business and we’ll help you choose the right package for your needs.
+                        Tell us a bit about your business and we'll help you choose the right package for your needs.
                     </p>
 
-                    <form class="w2p-form" data-web2phone="form"
-  data-public-key="8Wy7RGLrAnchSChVftzUz1A7"
-  data-endpoint="https://web2phone.co.uk/api/v1/submit/">
-  <div><input name="your_name" type="text" placeholder="Jane Doe" required></div>
-  <div><input name="email" type="email" placeholder="you@example.com" required></div>
-  <div><input name="phone" type="tel" placeholder="+14155552671"></div>
-  <div><textarea name="message" placeholder="How can we help?" required></textarea></div>
-  <button type="submit">Send</button>
-  <p data-w2p-output class="w2p-output" aria-live="polite"></p>
-</form>
-<script src="https://web2phone.co.uk/static/formsapp/js/embed.js?v=5"></script>
+                    <form method="POST" action="/" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" name="name" placeholder="How should we address you?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Where should we reply?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number (optional):</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="business_name">Business Name (optional):</label>
+                            <input type="text" id="business_name" name="business_name" placeholder="Your business name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project_type">Package Interest:</label>
+                            <select id="project_type" name="project_type" required>
+                                <option value="">Select a package</option>
+                                <option value="Trades Website – Starter (£349 + £19/mo)">Starter – £349 + £19/month</option>
+                                <option value="Trades Website – Pro (£499 + £29/mo)">Pro – £499 + £29/month</option>
+                                <option value="Trades Website – Not Sure Yet">Not sure yet</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tell us about your business:</label>
+                            <textarea id="message" name="message"
+                                placeholder="What trade are you in? What area do you cover? Anything else we should know?"
+                                rows="5" required></textarea>
+                        </div>
+
+                        <!-- Honeypot -->
+                        <div style="display: none;">
+                            <label for="honeypot">Leave this field empty</label>
+                            <input type="text" id="honeypot" name="honeypot">
+                        </div>
+
+                        <!-- reCAPTCHA -->
+                        <div class="recaptcha-container">
+                            <div class="g-recaptcha" data-sitekey="6Lcr4ckqAAAAAMIthlCvwJEpAI-6SQewLLc5Jc8V"></div>
+                        </div>
+                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
+                        <div class="form-group agreement">
+                            <p>By sending this message, you agree to our <a href="/terms">Terms&nbsp;&amp;&nbsp;Conditions</a> and <a href="/privacy">Privacy&nbsp;Policy</a>.</p>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="send-button">Request Your Website</button>
+                            <button type="reset" class="reset-button">Clear Form</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -389,6 +440,7 @@
             </div>
         </div>
     </footer>
+
     <!-- Flash Message Modal -->
     <div id="flashMessageModal" class="modal">
         <div class="modal-content">
