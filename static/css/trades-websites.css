@@ -337,10 +337,6 @@ body {
     font-size: 1.05rem;
 }
 
-.contact-section {
-    padding-top: 40px;
-}
-
 .final-cta {
     background: linear-gradient(135deg, #0487D9 0%, #023859 100%);
     color: #ffffff;
@@ -361,22 +357,6 @@ body {
     margin: 0 auto 26px;
     line-height: 1.75;
     font-size: 1.05rem;
-}
-
-.trades-contact-wrap {
-    background: #ffffff;
-    border-radius: 22px;
-    padding: 40px 32px;
-    box-shadow: 0 10px 30px rgba(2, 56, 89, 0.12);
-}
-
-.trades-contact-form {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.contact-section .section-title {
-    color: #023859 !important;
 }
 
 .pricing-card .btn-primary {
@@ -426,4 +406,16 @@ body {
         width: 100%;
         text-align: center;
     }
+}
+
+/* ── Contact section ───────────────────────────────────────────────────────────
+   contact.css targets #contact but its styles are written generically enough
+   to work here. These overrides just ensure the section title and intro are
+   white against the background image, matching index.html exactly.
+──────────────────────────────────────────────────────────────────────────────── */
+#contact .section-title {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
