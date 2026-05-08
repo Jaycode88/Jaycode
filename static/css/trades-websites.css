@@ -6,10 +6,11 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+/* ── Header & Nav ─────────────────────────────────────────────────────────── */
 .trades-header {
     background: linear-gradient(135deg, #023859 0%, #0487D9 100%);
     color: #ffffff;
-    padding: 24px 20px 60px;
+    padding: 24px 20px 0;
 }
 
 .trades-nav {
@@ -38,6 +39,7 @@ body {
     text-decoration: underline;
 }
 
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
 .trades-hero {
     max-width: 1200px;
     margin: 0 auto;
@@ -45,6 +47,7 @@ body {
     grid-template-columns: 1.2fr 0.8fr;
     gap: 40px;
     align-items: center;
+    padding-bottom: 60px;
 }
 
 .hero-kicker {
@@ -103,10 +106,14 @@ body {
     margin-top: 24px;
 }
 
-.hero-buttons-center {
-    justify-content: center;
+.urgency-line {
+    margin: 18px 0 0;
+    font-size: 0.92rem;
+    color: #bfe9ff;
+    font-style: italic;
 }
 
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
 .btn {
     display: inline-block;
     padding: 14px 24px;
@@ -140,6 +147,7 @@ body {
     background: rgba(255, 255, 255, 0.12);
 }
 
+/* ── Hero summary card ────────────────────────────────────────────────────── */
 .hero-summary-card {
     background: #ffffff;
     color: #111827;
@@ -167,6 +175,7 @@ body {
     padding-left: 24px;
     margin-bottom: 12px;
     line-height: 1.55;
+    color: #1f2937;
 }
 
 .hero-summary-card li::before {
@@ -185,6 +194,43 @@ body {
     color: #0487D9;
 }
 
+/* ── Trust bar ────────────────────────────────────────────────────────────── */
+.trust-bar {
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 16px 20px;
+}
+
+.trust-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    color: #bfe9ff;
+}
+
+.trust-icon {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.trust-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────────── */
 .section {
     padding: 72px 20px;
 }
@@ -215,6 +261,7 @@ body {
     color: #374151;
 }
 
+/* ── Info cards ───────────────────────────────────────────────────────────── */
 .two-col-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -224,8 +271,14 @@ body {
 .info-card {
     background: #ffffff;
     border-radius: 16px;
-    padding: 28px;
+    padding: 32px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.info-card-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
 }
 
 .info-card h3 {
@@ -242,6 +295,104 @@ body {
     color: #374151;
 }
 
+/* ── Comparison grid ──────────────────────────────────────────────────────── */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.comparison-card {
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.comparison-them {
+    background: #fff5f5;
+    border: 2px solid #fecaca;
+}
+
+.comparison-us {
+    background: #f0fdf4;
+    border: 2px solid #86efac;
+}
+
+.comparison-label {
+    display: block;
+    margin: 0 0 20px;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #023859;
+}
+
+.comparison-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comparison-list li {
+    padding: 8px 0;
+    font-size: 0.97rem;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.comparison-list li:last-child {
+    border-bottom: none;
+}
+
+.comparison-list li.bad {
+    color: #991b1b;
+}
+
+.comparison-list li.good {
+    color: #166534;
+}
+
+/* ── Testimonial strip ────────────────────────────────────────────────────── */
+.testimonial-strip {
+    background: linear-gradient(135deg, #023859 0%, #03527f 100%);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.testimonial-block {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonial-quote-mark {
+    font-size: 5rem;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.2);
+    font-family: Georgia, serif;
+    margin-bottom: -10px;
+}
+
+.testimonial-text {
+    margin: 0 0 20px;
+    font-size: 1.3rem;
+    line-height: 1.75;
+    color: #ffffff;
+    font-style: italic;
+    font-family: Georgia, serif;
+}
+
+.testimonial-author {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #bfe9ff;
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ── Pricing ──────────────────────────────────────────────────────────────── */
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -317,6 +468,22 @@ body {
     font-weight: 700;
 }
 
+.pricing-card .btn-primary {
+    background: #0487D9;
+    color: #ffffff;
+    border: 2px solid #0487D9;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    display: block;
+}
+
+.pricing-card .btn-primary:hover {
+    background: #026bb3;
+    border-color: #026bb3;
+}
+
+/* ── Highlight strip ──────────────────────────────────────────────────────── */
 .highlight-strip {
     background: linear-gradient(135deg, #023859 0%, #03527f 100%);
     color: #ffffff;
@@ -328,6 +495,7 @@ body {
     margin: 0 0 16px;
     font-family: "Raleway", sans-serif;
     font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: #ffffff;
 }
 
 .highlight-strip p {
@@ -335,56 +503,94 @@ body {
     margin: 0 auto;
     line-height: 1.75;
     font-size: 1.05rem;
+    color: #bfe9ff;
 }
 
-.final-cta {
-    background: linear-gradient(135deg, #0487D9 0%, #023859 100%);
-    color: #ffffff;
-    border-radius: 22px;
-    padding: 52px 30px;
+/* ── Steps grid ───────────────────────────────────────────────────────────── */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.step-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
-    box-shadow: 0 10px 30px rgba(2, 56, 89, 0.16);
 }
 
-.final-cta h2 {
-    margin: 0 0 16px;
-    font-family: "Raleway", sans-serif;
-    font-size: clamp(2rem, 4vw, 2.6rem);
-}
-
-.final-cta p {
-    max-width: 800px;
-    margin: 0 auto 26px;
-    line-height: 1.75;
-    font-size: 1.05rem;
-}
-
-.pricing-card .btn-primary {
-    background: #0487D9;
+.step-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #023859 0%, #0487D9 100%);
     color: #ffffff;
-    border: 2px solid #0487D9;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
 }
 
-.pricing-card .btn-primary:hover {
-    background: #026bb3;
-    border-color: #026bb3;
+.step-card h3 {
+    margin: 0 0 12px;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.15rem;
+    color: #023859;
 }
 
+.step-card p {
+    margin: 0;
+    line-height: 1.7;
+    color: #374151;
+    font-size: 0.97rem;
+}
+
+/* ── Contact reply promise ────────────────────────────────────────────────── */
+.contact-reply-promise {
+    text-align: center;
+    color: #bfe9ff;
+    font-size: 0.97rem;
+    margin: -8px 0 24px;
+}
+
+/* ── Contact section overrides ────────────────────────────────────────────── */
+#contact .section-title {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 980px) {
     .trades-hero,
     .two-col-grid,
-    .pricing-grid {
+    .pricing-grid,
+    .comparison-grid {
         grid-template-columns: 1fr;
     }
 
     .pricing-card.featured {
         transform: none;
     }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trust-divider {
+        display: none;
+    }
 }
 
 @media (max-width: 640px) {
     .trades-header {
-        padding: 20px 16px 44px;
+        padding: 20px 16px 0;
     }
 
     .section {
@@ -394,7 +600,8 @@ body {
     .hero-summary-card,
     .info-card,
     .pricing-card,
-    .final-cta {
+    .comparison-card,
+    .step-card {
         padding: 24px;
     }
 
@@ -406,16 +613,12 @@ body {
         width: 100%;
         text-align: center;
     }
-}
 
-/* ── Contact section ───────────────────────────────────────────────────────────
-   contact.css targets #contact but its styles are written generically enough
-   to work here. These overrides just ensure the section title and intro are
-   white against the background image, matching index.html exactly.
-──────────────────────────────────────────────────────────────────────────────── */
-#contact .section-title {
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-bar-inner {
+        gap: 14px;
+    }
 }
