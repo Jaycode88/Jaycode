@@ -90,6 +90,8 @@ def index():
         email = request.form.get("email")
         project_type = request.form.get("project_type")
         message = request.form.get("message")
+        phone = request.form.get("phone")
+        business_name = request.form.get("business_name") 
         honeypot = request.form.get("honeypot")
         recaptcha_response = request.form.get("g-recaptcha-response")
 
@@ -100,7 +102,7 @@ def index():
         if not recaptcha_response or not verify_recaptcha(recaptcha_response):
             return jsonify({"status": "error", "message": "reCAPTCHA verification failed. Please try again."})
 
-        if send_email_gmail(name, email, project_type, message):
+        if send_email_gmail(name, email, project_type, message, phone=phone, business_name=business_name):
             return jsonify({"status": "success", "message": "Your message has been sent successfully!"})
         else:
             return jsonify({"status": "error", "message": "Failed to send your message. Please try again later."})
